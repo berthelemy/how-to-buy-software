@@ -1,0 +1,219 @@
+:: StoryTitle
+Alex's LMS Procurement Journey: Twee3 Edition
+
+:: StoryData
+{
+  "ifid": "8B2C4E1A-D93F-4B12-9A8E-72D61C5B4A3F",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "Start",
+  "zoom": 1
+}
+
+:: Start
+# Step 1: Identifying the Problem
+Alex, you've been tasked with buying a new LMS. Your boss is pushing for a quick result, but you know from your research that a "shopping list" RFP often fails. How do you start?
+
+* [[Focus on technical glitches and UI complaints.->Step 1 Result A]]
+* [[Define strategic problems and measurements (efficiency, compliance).->Step 1 Result B]]
+* [[Focus purely on the User Experience (UX) and "look and feel".->Step 1 Result C]]
+
+
+:: Step 1 Result A
+**The Consequence:** You fix the "slowness," but six months later, the system still doesn't improve actual employee performance. Because you didn't define measurements, you lack a business case to prove ROI to your CFO.
+
+[[Move to Step 2: Identifying Solutions->Step 2]]
+
+:: Step 1 Result B
+**The Consequence:** Success! You now have a rock-solid business case. By identifying "Non-compliance risk" as a driver, you can hold suppliers accountable to specific goals from day one.
+
+[[Move to Step 2: Identifying Solutions->Step 2]]
+
+:: Step 1 Result C
+**The Consequence:** Adoption increases temporarily because the "wrapper" looks nice, but the back-end reporting remains a nightmare for admins. You’ve traded long-term utility for short-term "wow" factor.
+
+[[Move to Step 2: Identifying Solutions->Step 2]]
+
+
+:: Step 2
+# Step 2: Identifying Solutions
+With the problem defined, you need to look at the "landscape." What type of solution fits best?
+
+* [[Go for a proprietary, all-in-one closed-source suite.->Step 2 Result A]]
+* [[Explore Open-Source options and implementation partners.->Step 2 Result B]]
+* [[Build a "cobbled-together" solution using existing tools like SharePoint.->Step 2 Result C]]
+
+
+:: Step 2 Result A
+**The Consequence:** Fast setup and a single point of contact. However, you are now "locked in." If the vendor raises prices next year, moving your data will be a costly nightmare.
+
+[[Move to Step 3: Making the Long List->Step 3]]
+
+:: Step 2 Result B
+**The Consequence:** You gain transparency and avoid vendor lock-in. You have a choice of who supports you, though you’ll need to spend more time vetting the specific implementation partner.
+
+[[Move to Step 3: Making the Long List->Step 3]]
+
+:: Step 2 Result C
+**The Consequence:** You saved the budget this quarter! But as user numbers grow, the lack of version control and robustness causes the "system" to crash during a mandatory compliance window.
+
+[[Move to Step 3: Making the Long List->Step 3]]
+
+
+:: Step 3
+# Step 3: Making the Long List
+It’s time to see who is out there. Where are you gathering your names?
+
+* [[Rely on search engine ads and "Top 10" sponsored lists.->Step 3 Result A]]
+* [[Use "Alternative to" searches and reach out to peer networks.->Step 3 Result B]]
+* [[Filter exclusively for vendors with the most "AI" and "VR" features.->Step 3 Result C]]
+
+
+:: Step 3 Result A
+**The Consequence:** You've found the companies with the biggest marketing budgets. Unfortunately, they might be too large and impersonal to care about your specific niche requirements.
+
+[[Move to Step 4: Creating User Scenarios->Step 4]]
+
+:: Step 3 Result B
+**The Consequence:** You get a balanced list. By asking peers, you find a mid-sized vendor that specializes in your industry—one you never would have found on page 1 of Google.
+
+[[Move to Step 4: Creating User Scenarios->Step 4]]
+
+:: Step 3 Result C
+**The Consequence:** You've fallen for the "glitz." You end up with a list of "shiny" products that have high complexity but might lack the basic stability your core users need.
+
+[[Move to Step 4: Creating User Scenarios->Step 4]]
+
+
+:: Step 4
+# Step 4: Creating User Scenarios
+You need to test the software. How do you describe your needs to the shortlisted vendors?
+
+* [[Create a massive checklist of 200+ features for a Yes/No response.->Step 4 Result A]]
+* [[Create 3-4 narrative "stories" (e.g., onboarding a new hire).->Step 4 Result B]]
+* [[Prioritize the technical specifications and IT security protocols.->Step 4 Result C]]
+
+
+:: Step 4 Result A
+**The Consequence:** Every vendor ticks "Yes" to everything. You learn nothing about the actual workflow, leading to massive "bite-back" when you realize "Yes" meant "Yes, with a custom plugin."
+
+[[Move to Step 5: Listing Requirements->Step 5]]
+
+:: Step 4 Result B
+**The Consequence:** Brilliant. Suppliers must demonstrate the end-to-end experience. You see exactly how many clicks it takes to get a task done before you sign a contract.
+
+[[Move to Step 5: Listing Requirements->Step 5]]
+
+:: Step 4 Result C
+**The Consequence:** IT is happy, but the platform is so cumbersome that your trainers refuse to use it. You have a very secure, very empty LMS.
+
+[[Move to Step 5: Listing Requirements->Step 5]]
+
+
+:: Step 5
+# Step 5: Listing Requirements
+Drafting the official document. How do you prioritize what Alex needs?
+
+* [[Treat every requirement as "Critical" or "Must Have."->Step 5 Result A]]
+* [[Use the MoSCoW model (Must, Should, Could, Won't have).->Step 5 Result B]]
+* [[Base requirements exactly on the features of your current old system.->Step 5 Result C]]
+
+
+:: Step 5 Result A
+**The Consequence:** No supplier can meet every requirement perfectly. You end up with inflated prices as vendors price in the "risk" of meeting your impossible list.
+
+[[Move to Step 6: Making the Short List->Step 6]]
+
+:: Step 5 Result B
+**The Consequence:** Clear market guidance. Suppliers know where they can be flexible. This leads to more honest, competitive bids that stay within budget.
+
+[[Move to Step 6: Making the Short List->Step 6]]
+
+:: Step 5 Result C
+**The Consequence:** You successfully spend $50k to replicate a 10-year-old workflow. You’ve missed the chance to innovate and solve the "Problem" from Step 1.
+
+[[Move to Step 6: Making the Short List->Step 6]]
+
+
+:: Step 6
+# Step 6: Making the Short List
+You have 20 leads. You need to narrow them down to 5-7.
+
+* [[Shortlist based on "Gut Feel" and who has the best-looking website.->Step 6 Result A]]
+* [[Filter rigorously against "Must Have" requirements.->Step 6 Result B]]
+* [[Shortlist based purely on the lowest price estimates.->Step 6 Result C]]
+
+
+:: Step 6 Result A
+**The Consequence:** You’ve kept a "trendy" startup that might go bust in a year and discarded a stable, "boring" partner who would have been a perfect fit.
+
+[[Move to Step 7: Competitive Dialogue->Step 7]]
+
+:: Step 6 Result B
+**The Consequence:** A scientific approach. You have a defensible list of 6 candidates that you can present to your stakeholders with confidence.
+
+[[Move to Step 7: Competitive Dialogue->Step 7]]
+
+:: Step 6 Result C
+**The Consequence:** You are left with "bottom-tier" options. You’ll save money on the license but lose it all (and more) on "implementation fees" later.
+
+[[Move to Step 7: Competitive Dialogue->Step 7]]
+
+
+:: Step 7
+# Step 7: Competitive Dialogue
+Time to talk. How does Alex handle the finalists?
+
+* [[Send a single RFP and pick the winner based on the written score.->Step 7 Result A]]
+* [[Run iterative "Deep Dives" and a 4-week test drive.->Step 7 Result B]]
+* [[Request a standard 60-minute sales demo of their top features.->Step 7 Result C]]
+
+
+:: Step 7 Result A
+**The Consequence:** Both parties are "working in the dark." You buy based on a document, but the reality of the software doesn't hit you until implementation—when it's too late.
+
+[[Move to Step 8: Negotiation->Step 8]]
+
+:: Step 7 Result B
+**The Consequence:** This takes effort, but you've teased out every assumption. You know exactly what you are buying, and the supplier knows exactly what they are delivering.
+
+[[Move to Step 8: Negotiation->Step 8]]
+
+:: Step 7 Result C
+**The Consequence:** You bought the "polished" sales version. Six months in, you realize the demo used features that require an "Enterprise Plus" license you didn't buy.
+
+[[Move to Step 8: Negotiation->Step 8]]
+
+
+:: Step 8
+# Step 8: Negotiation
+The final deal. What is Alex’s strategy?
+
+* [[Demand a 20% discount or walk away immediately.->Step 8 Result A]]
+* [[Negotiate on levers: license recycling, contract length, and "break clauses."->Step 8 Result B]]
+* [[Sign the vendor’s standard contract to start the project today.->Step 8 Result C]]
+
+
+:: Step 8 Result A
+**The Consequence:** The vendor agrees, but they put you on their "Bronze" support tier to save their margins. When the system goes down, you're at the bottom of the queue.
+
+[[Finish the Scenario->End]]
+
+:: Step 8 Result B
+**The Consequence:** A win-win. By getting a "Break Clause," you have the power to walk away if they don't perform, and the vendor gets the long-term contract security they want.
+
+[[Finish the Scenario->End]]
+
+:: Step 8 Result C
+**The Consequence:** You realize later there is no "Exit Strategy." You are legally tied to this vendor for 3 years, even if their service becomes terrible in year two.
+
+[[Finish the Scenario->End]]
+
+
+:: End
+# Process Complete
+You have navigated the 8 steps of software procurement! 
+
+Alex’s future depends on the choices made. Did you focus on the glitz, or did you follow the strategic dialogue? A successful procurement isn't about finding the "best" software, but the "right" fit for the problem.
+
+[[Restart the Journey?->Start]]
