@@ -23,7 +23,7 @@ Alex's LMS Procurement: The Strategic Journey
 <<set $score = 0>>
 
 :: Start
-# Introduction: The Mission
+!!Introduction: The Mission
 You are Alex, a Project Manager. Your organization's current training system is failing, and your boss wants a new Learning Management System (LMS) fast. 
 
 You've been handed a guide on strategic procurement. Will you follow the "shopping list" trap, or build a business case that lasts?
@@ -32,7 +32,7 @@ You've been handed a guide on strategic procurement. Will you follow the "shoppi
 
 
 :: Step 1
-# Step 1: Identify the Problem
+!!Step 1: Identify the Problem
 Your Department Head wants a "Feature List" immediately. How do you respond to define the problem correctly?
 
 <<set _choices = [
@@ -46,23 +46,26 @@ Your Department Head wants a "Feature List" immediately. How do you respond to d
 <</for>>
 
 :: Step 1 Result A
-**The Consequence:** You fix the speed, but the system still doesn't improve performance. You lack a business case to prove ROI later.
+!!Consequences
+You fix the speed, but the system still doesn't improve performance. You lack a business case to prove ROI later.
 <<set $score -= 1>>
 [[Continue to Step 2|Step 2]]
 
 :: Step 1 Result B
-**The Consequence:** Success! You have a rock-solid business case based on efficiency and risk. Suppliers can now be held to specific goals.
+!!Consequences
+ Success!! You have a rock-solid business case based on efficiency and risk. Suppliers can now be held to specific goals.
 <<set $score += 2>>
 [[Continue to Step 2|Step 2]]
 
 :: Step 1 Result C
-**The Consequence:** Adoption increases temporarily because it looks nice, but the back-end is still a mess for admins.
+!!Consequences
+ Adoption increases temporarily because it looks nice, but the back-end is still a mess for admins.
 <<set $score += 0>>
 [[Continue to Step 2|Step 2]]
 
 
 :: Step 2
-# Step 2: Identify Possible Solutions
+!! Step 2: Identify Possible Solutions
 Now that the problem is defined, what type of "landscape" are you looking for?
 
 <<set _choices = [
@@ -76,23 +79,26 @@ Now that the problem is defined, what type of "landscape" are you looking for?
 <</for>>
 
 :: Step 2 Result A
-**The Consequence:** Fast setup, but you are "locked in." Moving data or customizing features in the future will be very expensive.
+!!Consequences
+ Fast setup, but you are "locked in." Moving data or customizing features in the future will be very expensive.
 <<set $score += 0>>
 [[Continue to Step 3|Step 3]]
 
 :: Step 2 Result B
-**The Consequence:** Higher transparency and no vendor lock-in. You align with open standards, though you need to vet the partner carefully.
+!!Consequences
+ Higher transparency and no vendor lock-in. You align with open standards, though you need to vet the partner carefully.
 <<set $score += 2>>
 [[Continue to Step 3|Step 3]]
 
 :: Step 2 Result C
-**The Consequence:** Saves money now, but it's not robust. It will likely crash once you hit high concurrent user numbers.
+!!Consequences
+ Saves money now, but it's not robust. It will likely crash once you hit high concurrent user numbers.
 <<set $score -= 2>>
 [[Continue to Step 3|Step 3]]
 
 
 :: Step 3
-# Step 3: Make the Long List
+!! Step 3: Make the Long List
 Where are you gathering your list of potential LMS providers?
 
 <<set _choices = [
@@ -106,23 +112,26 @@ Where are you gathering your list of potential LMS providers?
 <</for>>
 
 :: Step 3 Result A
-**The Consequence:** You only see vendors with massive marketing budgets. You likely miss the niche providers who actually solve your problem.
+!!Consequences
+ You only see vendors with massive marketing budgets. You likely miss the niche providers who actually solve your problem.
 <<set $score -= 1>>
 [[Continue to Step 4|Step 4]]
 
 :: Step 3 Result B
-**The Consequence:** You get a balanced list. Peer feedback helps you identify "down-to-earth" suppliers who fit your culture.
+!!Consequences
+ You get a balanced list. Peer feedback helps you identify "down-to-earth" suppliers who fit your culture.
 <<set $score += 2>>
 [[Continue to Step 4|Step 4]]
 
 :: Step 3 Result C
-**The Consequence:** You get a list of "glitzy" products that might lack the basic stability or accessibility your organization requires.
+!!Consequences
+ You get a list of "glitzy" products that might lack the basic stability or accessibility your organization requires.
 <<set $score += 0>>
 [[Continue to Step 4|Step 4]]
 
 
 :: Step 4
-# Step 4: Create User Scenarios
+!! Step 4: Create User Scenarios
 How will you show the suppliers what you actually need the software to do?
 
 <<set _choices = [
@@ -136,23 +145,26 @@ How will you show the suppliers what you actually need the software to do?
 <</for>>
 
 :: Step 4 Result A
-**The Consequence:** Every vendor ticks "Yes." You learn nothing about the actual workflow, leading to "bite-back" during implementation.
+!!Consequences
+ Every vendor ticks "Yes." You learn nothing about the actual workflow, leading to "bite-back" during implementation.
 <<set $score -= 2>>
 [[Continue to Step 5|Step 5]]
 
 :: Step 4 Result B
-**The Consequence:** Success. Suppliers must demonstrate the end-to-end experience. You see the friction points before you spend a penny.
+!!Consequences
+ Success. Suppliers must demonstrate the end-to-end experience. You see the friction points before you spend a penny.
 <<set $score += 2>>
 [[Continue to Step 5|Step 5]]
 
 :: Step 4 Result C
-**The Consequence:** IT is happy with the security, but the system is so hard to use that trainers refuse to upload content.
+!!Consequences
+ IT is happy with the security, but the system is so hard to use that trainers refuse to upload content.
 <<set $score += 0>>
 [[Continue to Step 5|Step 5]]
 
 
 :: Step 5
-# Step 5: List the Requirements
+!! Step 5: List the Requirements
 You are drafting the first pass of your requirements. How do you prioritize?
 
 <<set _choices = [
@@ -166,23 +178,26 @@ You are drafting the first pass of your requirements. How do you prioritize?
 <</for>>
 
 :: Step 5 Result A
-**The Consequence:** No supplier can meet every requirement. You end up with over-promised, expensive "Frankenstein" proposals.
+!!Consequences
+ No supplier can meet every requirement. You end up with over-promised, expensive "Frankenstein" proposals.
 <<set $score -= 1>>
 [[Continue to Step 6|Step 6]]
 
 :: Step 5 Result B
-**The Consequence:** You provide clear guidance to the market. This leads to more honest and competitive bids that fit your budget.
+!!Consequences
+ You provide clear guidance to the market. This leads to more honest and competitive bids that fit your budget.
 <<set $score += 2>>
 [[Continue to Step 6|Step 6]]
 
 :: Step 5 Result C
-**The Consequence:** You successfully spend a fortune to replicate your current problems in a newer interface. No innovation occurred.
+!!Consequences
+ You successfully spend a fortune to replicate your current problems in a newer interface. No innovation occurred.
 <<set $score -= 1>>
 [[Continue to Step 6|Step 6]]
 
 
 :: Step 6
-# Step 6: Make the Short List
+!! Step 6: Make the Short List
 You have 20 options. You need to narrow it down to 5-7.
 
 <<set _choices = [
@@ -196,23 +211,26 @@ You have 20 options. You need to narrow it down to 5-7.
 <</for>>
 
 :: Step 6 Result A
-**The Consequence:** Risky. You might discard a stable partner just because their marketing site is slightly dated.
+!!Consequences
+ Risky. You might discard a stable partner just because their marketing site is slightly dated.
 <<set $score += 0>>
 [[Continue to Step 7|Step 7]]
 
 :: Step 6 Result B
-**The Consequence:** A scientific, defensible approach. You ensure the remaining vendors can actually handle your core needs.
+!!Consequences
+ A scientific, defensible approach. You ensure the remaining vendors can actually handle your core needs.
 <<set $score += 2>>
 [[Continue to Step 7|Step 7]]
 
 :: Step 6 Result C
-**The Consequence:** You are left with budget options that likely lack the support or scalability you need long-term.
+!!Consequences
+ You are left with budget options that likely lack the support or scalability you need long-term.
 <<set $score -= 2>>
 [[Continue to Step 7|Step 7]]
 
 
 :: Step 7
-# Step 7: Competitive Dialogue
+!! Step 7: Competitive Dialogue
 It's time to talk to the finalists. How does Alex engage them?
 
 <<set _choices = [
@@ -226,23 +244,26 @@ It's time to talk to the finalists. How does Alex engage them?
 <</for>>
 
 :: Step 7 Result A
-**The Consequence:** Both parties work in the dark. Assumptions are hidden until implementation, when they turn into expensive delays.
+!!Consequences
+ Both parties work in the dark. Assumptions are hidden until implementation, when they turn into expensive delays.
 <<set $score -= 2>>
 [[Continue to Step 8|Step 8]]
 
 :: Step 7 Result B
-**The Consequence:** Highly reliable. You know exactly what you are buying, and the vendor understands what they are delivering.
+!!Consequences
+ Highly reliable. You know exactly what you are buying, and the vendor understands what they are delivering.
 <<set $score += 2>>
 [[Continue to Step 8|Step 8]]
 
 :: Step 7 Result C
-**The Consequence:** You bought the "dream" demo but live with a "reality" that requires features you didn't actually purchase.
+!!Consequences
+ You bought the "dream" demo but live with a "reality" that requires features you didn't actually purchase.
 <<set $score += 0>>
 [[Continue to Step 8|Step 8]]
 
 
 :: Step 8
-# Step 8: Negotiation
+!! Step 8: Negotiation
 The final deal is on the table. How do you handle it?
 
 <<set _choices = [
@@ -256,35 +277,38 @@ The final deal is on the table. How do you handle it?
 <</for>>
 
 :: Step 8 Result A
-**The Consequence:** The vendor agrees, but they put you on "Bronze" support and charge extra for every small request later.
+!!Consequences
+ The vendor agrees, but they put you on "Bronze" support and charge extra for every small request later.
 <<set $score += 0>>
 [[Finish the Scenario|End]]
 
 :: Step 8 Result B
-**The Consequence:** A win-win. You have the safety of a break clause, and the vendor has a sustainable deal.
+!!Consequences
+ A win-win. You have the safety of a break clause, and the vendor has a sustainable deal.
 <<set $score += 2>>
 [[Finish the Scenario|End]]
 
 :: Step 8 Result C
-**The Consequence:** No exit strategy. You are legally tied to this vendor for 3 years, even if their service fails in month six.
+!!Consequences
+ No exit strategy. You are legally tied to this vendor for 3 years, even if their service fails in month six.
 <<set $score -= 1>>
 [[Finish the Scenario|End]]
 
 
 :: End
-# Final Results
+!! Final Results
 Alex’s procurement journey has come to an end.
 
 **Procurement Mastery Score: $score**
 
 <<if $score gte 12>>
-### Result: The Strategic Professional
+!!!!!! Result: The Strategic Professional
 Alex is a hero. By building a business case and using competitive dialogue, you found a system that fits, works, and will last.
 <<elseif $score gte 5>>
-### Result: The Functional Buyer
+!!!!!! Result: The Functional Buyer
 The LMS is in place and it works, but there were some missed opportunities for innovation and better contractual safety.
 <<else>>
-### Result: The Procurement Disaster
+!!!!!! Result: The Procurement Disaster
 The "shopping list" approach failed. Alex has a system that doesn't solve the core problems, and IT is currently dealing with "bite-back" implementation errors.
 <</if>>
 
