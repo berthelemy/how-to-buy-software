@@ -1,229 +1,291 @@
 :: StoryTitle
-Alex's LMS Procurement (SugarCube Edition)
+Alex's LMS Procurement: The Strategic Journey
 
 :: StoryData
 {
-  "ifid": "C0FFEE11-BA5E-4B12-9A8E-72D61C5B4A3F",
+  "ifid": "A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D",
   "format": "SugarCube",
   "format-version": "2.37.3",
   "start": "Start"
 }
 
+:: StoryCaption
+<div id="score-meter">
+	<span style="font-weight:bold;">Procurement Integrity:</span>
+	<div style="background-color: #444; width: 100%; height: 20px; border-radius: 10px; margin-top: 5px; border: 1px solid #777;"><div id="score-bar" @style="'background-color: ' + ($score >= 0 ? '#4CAF50' : '#f44336') + '; width: ' + Math.clamp(($score + 10) * 5, 0, 100) + '%; height: 100%; border-radius: 10px; transition: width 0.5s ease-in-out;'"></div>
+	</div>
+	<div style="text-align: center; font-size: 0.8em; margin-top: 5px;">
+		Current Rating: <<print $score>>
+	</div>
+</div>
+
 :: StoryInit
 <<set $score = 0>>
 
 :: Start
-# Step 1: Identifying the Problem
-Alex, you've been tasked with buying a new LMS. Your boss wants a "shopping list" RFP sent out by Friday. According to the guide, how do you actually begin?
+# Introduction: The Mission
+You are Alex, a Project Manager. Your organization's current training system is failing, and your boss wants a new Learning Management System (LMS) fast. 
 
-* [[Focus on technical glitches and UI complaints.|Step 1 Result A]]
-* [[Define strategic problems and measurements (efficiency, compliance).|Step 1 Result B]]
-* [[Focus purely on the User Experience (UX) and "look and feel".|Step 1 Result C]]
+You've been handed a guide on strategic procurement. Will you follow the "shopping list" trap, or build a business case that lasts?
 
+[[Begin Step 1: Identify the Problem|Step 1]]
+
+
+:: Step 1
+# Step 1: Identify the Problem
+Your Department Head wants a "Feature List" immediately. How do you respond to define the problem correctly?
+
+<<set _choices = [
+	{ text: "Focus on technical glitches like slow login speeds and a dated UI.", link: "Step 1 Result A" },
+	{ text: "Define strategic problems (efficiency, error rates, compliance risk) and set measurements.", link: "Step 1 Result B" },
+	{ text: "Prioritize User Experience (UX) to ensure employees stop complaining about the look.", link: "Step 1 Result C" }
+]>>
+<<set _choices.shuffle()>>\
+<<for _i to 0; _i lt _choices.length; _i++>>
+* [[_choices[_i].text|_choices[_i].link]]
+<</for>>
 
 :: Step 1 Result A
-**The Consequence:** You fix the "slowness," but six months later, the system still doesn't improve performance. You lack a business case to prove ROI.
+**The Consequence:** You fix the speed, but the system still doesn't improve performance. You lack a business case to prove ROI later.
 <<set $score -= 1>>
-[[Move to Step 2: Identifying Solutions|Step 2]]
+[[Continue to Step 2|Step 2]]
 
 :: Step 1 Result B
-**The Consequence:** Success! You have a rock-solid business case. Suppliers can be held accountable to specific goals like "reducing compliance risk."
+**The Consequence:** Success! You have a rock-solid business case based on efficiency and risk. Suppliers can now be held to specific goals.
 <<set $score += 2>>
-[[Move to Step 2: Identifying Solutions|Step 2]]
+[[Continue to Step 2|Step 2]]
 
 :: Step 1 Result C
-**The Consequence:** Adoption increases temporarily because it looks nice, but the back-end remains a mess. You’ve traded long-term utility for a "shiny" interface.
+**The Consequence:** Adoption increases temporarily because it looks nice, but the back-end is still a mess for admins.
 <<set $score += 0>>
-[[Move to Step 2: Identifying Solutions|Step 2]]
+[[Continue to Step 2|Step 2]]
 
 
 :: Step 2
-# Step 2: Identifying Solutions
-The problem is defined. Now, what "landscape" of solutions are you looking for?
+# Step 2: Identify Possible Solutions
+Now that the problem is defined, what type of "landscape" are you looking for?
 
-* [[Go for a proprietary, all-in-one closed-source suite.|Step 2 Result A]]
-* [[Explore Open-Source options and implementation partners.|Step 2 Result B]]
-* [[Build a "cobbled-together" solution using existing tools.|Step 2 Result C]]
-
+<<set _choices = [
+	{ text: "Look for a proprietary, all-in-one closed-source suite.", link: "Step 2 Result A" },
+	{ text: "Explore Open-Source options and specialized implementation partners.", link: "Step 2 Result B" },
+	{ text: "Build a 'cobbled-together' solution using existing tools like SharePoint and Excel.", link: "Step 2 Result C" }
+]>>
+<<set _choices.shuffle()>>\
+<<for _i to 0; _i lt _choices.length; _i++>>
+* [[_choices[_i].text|_choices[_i].link]]
+<</for>>
 
 :: Step 2 Result A
-**The Consequence:** Fast setup, but you are now "locked in." Future customizations will be expensive and data portability is limited.
+**The Consequence:** Fast setup, but you are "locked in." Moving data or customizing features in the future will be very expensive.
 <<set $score += 0>>
-[[Move to Step 3: Making the Long List|Step 3]]
+[[Continue to Step 3|Step 3]]
 
 :: Step 2 Result B
-**The Consequence:** High transparency and no vendor lock-in. You have more choice over who supports you, aligning with open standards.
+**The Consequence:** Higher transparency and no vendor lock-in. You align with open standards, though you need to vet the partner carefully.
 <<set $score += 2>>
-[[Move to Step 3: Making the Long List|Step 3]]
+[[Continue to Step 3|Step 3]]
 
 :: Step 2 Result C
-**The Consequence:** Saves budget initially, but it's not robust. The system breaks under the weight of multiple users and complex roles.
+**The Consequence:** Saves money now, but it's not robust. It will likely crash once you hit high concurrent user numbers.
 <<set $score -= 2>>
-[[Move to Step 3: Making the Long List|Step 3]]
+[[Continue to Step 3|Step 3]]
 
 
 :: Step 3
-# Step 3: Making the Long List
-You need to see what's out there. Where do you gather your candidates?
+# Step 3: Make the Long List
+Where are you gathering your list of potential LMS providers?
 
-* [[Rely on search engine ads and "Top 10" sponsored lists.|Step 3 Result A]]
-* [[Use "Alternative to" searches and reach out to peer networks.|Step 3 Result B]]
-* [[Filter exclusively for vendors with the most AI features.|Step 3 Result C]]
-
+<<set _choices = [
+	{ text: "Search engine ads and 'Top 10' sponsored comparison sites.", link: "Step 3 Result A" },
+	{ text: "Use 'Alternative to' searches and reach out to your peer networks for real feedback.", link: "Step 3 Result B" },
+	{ text: "Filter only for the most fashionable, 'hot' technology like AI-only platforms.", link: "Step 3 Result C" }
+]>>
+<<set _choices.shuffle()>>\
+<<for _i to 0; _i lt _choices.length; _i++>>
+* [[_choices[_i].text|_choices[_i].link]]
+<</for>>
 
 :: Step 3 Result A
-**The Consequence:** You only see vendors with big marketing budgets. You likely miss the "down-to-earth" suppliers who fit your niche.
+**The Consequence:** You only see vendors with massive marketing budgets. You likely miss the niche providers who actually solve your problem.
 <<set $score -= 1>>
-[[Move to Step 4: Creating User Scenarios|Step 4]]
+[[Continue to Step 4|Step 4]]
 
 :: Step 3 Result B
-**The Consequence:** You get a balanced list. By asking peers, you find vendors who actually solve the problems you identified in Step 1.
+**The Consequence:** You get a balanced list. Peer feedback helps you identify "down-to-earth" suppliers who fit your culture.
 <<set $score += 2>>
-[[Move to Step 4: Creating User Scenarios|Step 4]]
+[[Continue to Step 4|Step 4]]
 
 :: Step 3 Result C
-**The Consequence:** You end up with "feature-bloat." The software is "shiny" but overly complex for your users' actual daily needs.
+**The Consequence:** You get a list of "glitzy" products that might lack the basic stability or accessibility your organization requires.
 <<set $score += 0>>
-[[Move to Step 4: Creating User Scenarios|Step 4]]
+[[Continue to Step 4|Step 4]]
 
 
 :: Step 4
-# Step 4: Creating User Scenarios
-How do you present your needs to the vendors to see if the software *actually* works?
+# Step 4: Create User Scenarios
+How will you show the suppliers what you actually need the software to do?
 
-* [[Create a massive checklist of 200+ features for a Yes/No response.|Step 4 Result A]]
-* [[Create 3-4 narrative "stories" describing end-to-end processes.|Step 4 Result B]]
-* [[Prioritize technical specs like APIs and server uptime.|Step 4 Result C]]
-
+<<set _choices = [
+	{ text: "Send a massive checklist of 200+ features for them to tick Yes/No.", link: "Step 4 Result A" },
+	{ text: "Write 3-4 short narrative stories describing an end-to-end process (e.g., onboarding).", link: "Step 4 Result B" },
+	{ text: "Focus primarily on technical uptime, API documentation, and server security.", link: "Step 4 Result C" }
+]>>
+<<set _choices.shuffle()>>\
+<<for _i to 0; _i lt _choices.length; _i++>>
+* [[_choices[_i].text|_choices[_i].link]]
+<</for>>
 
 :: Step 4 Result A
-**The Consequence:** Every vendor ticks "Yes." You gain zero insight into *how* it works, leading to "bite-back" during implementation.
+**The Consequence:** Every vendor ticks "Yes." You learn nothing about the actual workflow, leading to "bite-back" during implementation.
 <<set $score -= 2>>
-[[Move to Step 5: Listing Requirements|Step 5]]
+[[Continue to Step 5|Step 5]]
 
 :: Step 4 Result B
-**The Consequence:** Suppliers must demonstrate the real experience. You see exactly where the friction points are before buying.
+**The Consequence:** Success. Suppliers must demonstrate the end-to-end experience. You see the friction points before you spend a penny.
 <<set $score += 2>>
-[[Move to Step 5: Listing Requirements|Step 5]]
+[[Continue to Step 5|Step 5]]
 
 :: Step 4 Result C
-**The Consequence:** IT loves the security, but the system is so difficult for trainers to use that no content ever gets uploaded.
+**The Consequence:** IT is happy with the security, but the system is so hard to use that trainers refuse to upload content.
 <<set $score += 0>>
-[[Move to Step 5: Listing Requirements|Step 5]]
+[[Continue to Step 5|Step 5]]
 
 
 :: Step 5
-# Step 5: Listing Requirements
-Drafting the official document. How do you prioritize Alex's needs?
+# Step 5: List the Requirements
+You are drafting the first pass of your requirements. How do you prioritize?
 
-* [[Treat every requirement as "Must Have."|Step 5 Result A]]
-* [[Use the MoSCoW model (Must, Should, Could, Won't have).|Step 5 Result B]]
-* [[Base requirements exactly on the features of your current old system.|Step 5 Result C]]
-
+<<set _choices = [
+	{ text: "Mark every single requirement as a 'Critical Must-Have'.", link: "Step 5 Result A" },
+	{ text: "Use the MoSCoW model (Must, Should, Could, Won't have) for clear prioritization.", link: "Step 5 Result B" },
+	{ text: "Base all requirements on what your current (old) system does today.", link: "Step 5 Result C" }
+]>>
+<<set _choices.shuffle()>>\
+<<for _i to 0; _i lt _choices.length; _i++>>
+* [[_choices[_i].text|_choices[_i].link]]
+<</for>>
 
 :: Step 5 Result A
-**The Consequence:** No supplier can meet every requirement perfectly. You end up with over-promised, expensive "Frankenstein" proposals.
+**The Consequence:** No supplier can meet every requirement. You end up with over-promised, expensive "Frankenstein" proposals.
 <<set $score -= 1>>
-[[Move to Step 6: Making the Short List|Step 6]]
+[[Continue to Step 6|Step 6]]
 
 :: Step 5 Result B
-**The Consequence:** Clear market guidance. Suppliers know where to deliver and where to compromise, leading to realistic bids.
+**The Consequence:** You provide clear guidance to the market. This leads to more honest and competitive bids that fit your budget.
 <<set $score += 2>>
-[[Move to Step 6: Making the Short List|Step 6]]
+[[Continue to Step 6|Step 6]]
 
 :: Step 5 Result C
-**The Consequence:** You successfully spend a fortune to replicate your current problems in a newer interface. Innovation is stifled.
+**The Consequence:** You successfully spend a fortune to replicate your current problems in a newer interface. No innovation occurred.
 <<set $score -= 1>>
-[[Move to Step 6: Making the Short List|Step 6]]
+[[Continue to Step 6|Step 6]]
 
 
 :: Step 6
-# Step 6: Making the Short List
-You have 20 leads. You need to narrow them down to 5.
+# Step 6: Make the Short List
+You have 20 options. You need to narrow it down to 5-7.
 
-* [[Shortlist based on website aesthetics and "gut feel".|Step 6 Result A]]
-* [[Filter rigorously against "Must Have" requirements.|Step 6 Result B]]
-* [[Shortlist based on the lowest price estimates.|Step 6 Result C]]
-
+<<set _choices = [
+	{ text: "Shortlist based on 'gut feel' and the modern look of their website.", link: "Step 6 Result A" },
+	{ text: "Rigorous filtering: Disqualify any supplier that fails a single 'Must-Have'.", link: "Step 6 Result B" },
+	{ text: "Shortlist based purely on the lowest initial price estimates.", link: "Step 6 Result C" }
+]>>
+<<set _choices.shuffle()>>\
+<<for _i to 0; _i lt _choices.length; _i++>>
+* [[_choices[_i].text|_choices[_i].link]]
+<</for>>
 
 :: Step 6 Result A
-**The Consequence:** High risk. You might discard a stable partner just because their marketing site is a bit dated.
+**The Consequence:** Risky. You might discard a stable partner just because their marketing site is slightly dated.
 <<set $score += 0>>
-[[Move to Step 7: Competitive Dialogue|Step 7]]
+[[Continue to Step 7|Step 7]]
 
 :: Step 6 Result B
-**The Consequence:** Scientific and defensible. You narrow the field to high-quality candidates who actually meet your core needs.
+**The Consequence:** A scientific, defensible approach. You ensure the remaining vendors can actually handle your core needs.
 <<set $score += 2>>
-[[Move to Step 7: Competitive Dialogue|Step 7]]
+[[Continue to Step 7|Step 7]]
 
 :: Step 6 Result C
-**The Consequence:** You are left with budget options that lack support. You pay more later in "professional services" fees.
+**The Consequence:** You are left with budget options that likely lack the support or scalability you need long-term.
 <<set $score -= 2>>
-[[Move to Step 7: Competitive Dialogue|Step 7]]
+[[Continue to Step 7|Step 7]]
 
 
 :: Step 7
 # Step 7: Competitive Dialogue
-Time to talk. How does Alex handle the finalists?
+It's time to talk to the finalists. How does Alex engage them?
 
-* [[Send a single RFP and pick the winner based on the written score.|Step 7 Result A]]
-* [[Run iterative "Deep Dives" and a 4-week test drive.|Step 7 Result B]]
-* [[Request a standard 60-minute sales demo.|Step 7 Result C]]
-
+<<set _choices = [
+	{ text: "Use a single RFP and score the written responses to pick the winner.", link: "Step 7 Result A" },
+	{ text: "Run iterative 'Deep Dives' and a 4-week test drive to tease out assumptions.", link: "Step 7 Result B" },
+	{ text: "Let each vendor do a standard 60-minute sales demonstration of their choice.", link: "Step 7 Result C" }
+]>>
+<<set _choices.shuffle()>>\
+<<for _i to 0; _i lt _choices.length; _i++>>
+* [[_choices[_i].text|_choices[_i].link]]
+<</for>>
 
 :: Step 7 Result A
-**The Consequence:** Both parties work in the dark. Assumptions bite you later because you bought based on a document, not reality.
+**The Consequence:** Both parties work in the dark. Assumptions are hidden until implementation, when they turn into expensive delays.
 <<set $score -= 2>>
-[[Move to Step 8: Negotiation|Step 8]]
+[[Continue to Step 8|Step 8]]
 
 :: Step 7 Result B
-**The Consequence:** Assumptions are teased out and you see the software in real-life conditions. A very reliable way to choose.
+**The Consequence:** Highly reliable. You know exactly what you are buying, and the vendor understands what they are delivering.
 <<set $score += 2>>
-[[Move to Step 8: Negotiation|Step 8]]
+[[Continue to Step 8|Step 8]]
 
 :: Step 7 Result C
-**The Consequence:** You see a "polished" version of the product. You buy the "dream" but live with a "reality" that doesn't fit your workflow.
+**The Consequence:** You bought the "dream" demo but live with a "reality" that requires features you didn't actually purchase.
 <<set $score += 0>>
-[[Move to Step 8: Negotiation|Step 8]]
+[[Continue to Step 8|Step 8]]
 
 
 :: Step 8
 # Step 8: Negotiation
-The final deal. What is Alex’s strategy?
+The final deal is on the table. How do you handle it?
 
-* [[Demand a massive discount or you walk away.|Step 8 Result A]]
-* [[Negotiate on multiple levers (license recycling, break clauses).|Step 8 Result B]]
-* [[Sign the vendor's standard boilerplate contract.|Step 8 Result C]]
-
+<<set _choices = [
+	{ text: "Demand a 20% discount or walk away immediately.", link: "Step 8 Result A" },
+	{ text: "Negotiate on multiple levers: license recycling, contract length, and break clauses.", link: "Step 8 Result B" },
+	{ text: "Sign the vendor's standard boilerplate contract to get started faster.", link: "Step 8 Result C" }
+]>>
+<<set _choices.shuffle()>>\
+<<for _i to 0; _i lt _choices.length; _i++>>
+* [[_choices[_i].text|_choices[_i].link]]
+<</for>>
 
 :: Step 8 Result A
-**The Consequence:** Vendor agrees but puts you on "Bronze" support to save their margins. When the system fails, you're at the bottom of the list.
+**The Consequence:** The vendor agrees, but they put you on "Bronze" support and charge extra for every small request later.
 <<set $score += 0>>
-[[Finish Scenario|End]]
+[[Finish the Scenario|End]]
 
 :: Step 8 Result B
-**The Consequence:** A win-win. Both parties feel they are getting value, and you have a "Break Clause" for safety.
+**The Consequence:** A win-win. You have the safety of a break clause, and the vendor has a sustainable deal.
 <<set $score += 2>>
-[[Finish Scenario|End]]
+[[Finish the Scenario|End]]
 
 :: Step 8 Result C
-**The Consequence:** No exit strategy. You are legally trapped for 3 years, even if the service quality drops in year two.
+**The Consequence:** No exit strategy. You are legally tied to this vendor for 3 years, even if their service fails in month six.
 <<set $score -= 1>>
-[[Finish Scenario|End]]
+[[Finish the Scenario|End]]
 
 
 :: End
-# Procurement Complete
-You have completed the process.
+# Final Results
+Alex’s procurement journey has come to an end.
 
-**Your Procurement Mastery Score: $score**
+**Procurement Mastery Score: $score**
 
 <<if $score gte 12>>
-Alex is a **Strategic Hero**. The organization has the right tool for the right price, and the implementation will be smooth.
+### Result: The Strategic Professional
+Alex is a hero. By building a business case and using competitive dialogue, you found a system that fits, works, and will last.
 <<elseif $score gte 5>>
-Alex is a **Functional Purchaser**. The system works, but there may be some hidden costs or "bite-back" moments ahead.
+### Result: The Functional Buyer
+The LMS is in place and it works, but there were some missed opportunities for innovation and better contractual safety.
 <<else>>
-Alex is in **Trouble**. The "shopping list" approach has led to a misaligned tool, high costs, and a frustrated IT department.
+### Result: The Procurement Disaster
+The "shopping list" approach failed. Alex has a system that doesn't solve the core problems, and IT is currently dealing with "bite-back" implementation errors.
 <</if>>
 
 [[Restart the Journey?|Start]]
