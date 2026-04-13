@@ -10,306 +10,220 @@ Alex's LMS Procurement: The Strategic Journey
 }
 
 :: StoryCaption
-<div id="score-meter">
-	<span style="font-weight:bold;">Procurement Integrity:</span>
-	<div style="background-color: #444; width: 100%; height: 20px; border-radius: 10px; margin-top: 5px; border: 1px solid #777;"><div id="score-bar" @style="'background-color: ' + ($score >= 0 ? '#4CAF50' : '#f44336') + '; width: ' + Math.clamp(($score + 10) * 5, 0, 100) + '%; height: 100%; border-radius: 10px; transition: width 0.5s ease-in-out;'"></div>
-	</div>
-	<div style="text-align: center; font-size: 0.8em; margin-top: 5px;">
-		Current Rating: <<print $score>>
-	</div>
+<span class="meter-label">Strategic Integrity</span>
+<div class="meter-container">
+	<div class="meter-bar" @style="'width: ' + Math.clamp(($integrity * 10), 0, 100) + '%; background-color: ' + ($integrity > 6 ? '#4CAF50' : '#FF9800')"></div>
 </div>
 
-:: StoryInit
-<<set $score = 0>>
+<span class="meter-label">Budget Remaining</span>
+<div class="meter-container">
+	<div class="meter-bar" @style="'width: ' + ($budget / 50) + '%; background-color: ' + ($budget < 1000 ? '#f44336' : '#2196F3')"></div>
+</div>
+<small>Budget: £$budget</small>
 
 :: Start
-!!Introduction: The Mission
-You are Alex, a Project Manager. Your organization's current training system is failing, and your boss wants a new Learning Management System (LMS) fast. 
+<h2>The Mission</h2>
+<p>You are Alex, a project manager for a medium-sized company. You've been asked to procure a new Learning Management System (LMS) for your organization.</p>
+<p>You have a £$budget budget and a deadline. Every choice you make will affect:</p>
+<ol>
+<li> The ''Strategic Integrity'' of the project (how well the solution fits)</li>
+<li> Your ''Budget''</li>
+</ol>
 
-You've been handed a guide on strategic procurement. Will you follow the "shopping list" trap, or build a business case that lasts?
+<p>Your strategic integrity rating is shown in the panel on the left.</p>
+<p>You have an initial budget of £$budget. This will need to cover the procurement process and initial implementation costs.</p>
+<p>You can also track the budget in the left hand panel.</p>
+
+<p>Strategic choices often cost more upfront but prevent "bite-back" later.</p>
 
 [[Begin Step 1: Identify the Problem|Step 1]]
 
-
 :: Step 1
-!!Step 1: Identify the Problem
-Your Department Head wants a "Feature List" immediately. How do you respond to define the problem correctly?
-
+<h2>Step 1: Identify the Problem</h2>
+<p>How do you start the process?</p>
 <<set _choices = [
-	{ text: "Focus on technical glitches like slow login speeds and a dated UI.", link: "Step 1 Result A" },
-	{ text: "Define strategic problems (efficiency, error rates, compliance risk) and set measurements.", link: "Step 1 Result B" },
-	{ text: "Prioritize User Experience (UX) to ensure employees stop complaining about the look.", link: "Step 1 Result C" }
+	{ text: "Focus on technical glitches and complaints about the user experience.", integrity: -1, budget: 0, link: "S1Ra" },
+	{ text: "Define strategic problems and measurements.", integrity: 2, budget: -500, link: "S1R" },
+	{ text: "Prioritize look-and-feel based on user complaints.", integrity: -2, budget: -0, link: "S1Ra" }
 ]>>
-<<set _choices.shuffle()>>\
-<<for _i to 0; _i lt _choices.length; _i++>>
-* [[_choices[_i].text|_choices[_i].link]]
-<</for>>
+<<randomChoices _choices>>
 
-:: Step 1 Result A
-!!Consequences
-You fix the speed, but the system still doesn't improve performance. You lack a business case to prove ROI later.
-<<set $score -= 1>>
-[[Continue to Step 2|Step 2]]
+:: S1Ra
+<<set _statusText = [{text:"Focussing on technical issues or the look and feel is easier and cheaper, but it doesn't address the strategic problems. Expect 'bite-back' later."}] >>
+<<Status _statusText>>
 
-:: Step 1 Result B
-!!Consequences
- Success!! You have a rock-solid business case based on efficiency and risk. Suppliers can now be held to specific goals.
-<<set $score += 2>>
-[[Continue to Step 2|Step 2]]
+[[Step 2: Identify Solutions|Step 2]]
 
-:: Step 1 Result C
-!!Consequences
- Adoption increases temporarily because it looks nice, but the back-end is still a mess for admins.
-<<set $score += 0>>
-[[Continue to Step 2|Step 2]]
+:: S1R
+<<set _statusText = [{text:"The investigation stage is complete.Defining strategic problems cost a bit more in time/consultancy, but your integrity is higher."}] >>
+<<Status _statusText>>
 
+[[Step 2: Identify Solutions|Step 2]]
 
 :: Step 2
-!! Step 2: Identify Possible Solutions
-Now that the problem is defined, what type of "landscape" are you looking for?
-
+<h2>Step 2: Identify Possible Solutions</h2>
+<p>What "landscape" of solutions fits best?</p>
 <<set _choices = [
-	{ text: "Look for a proprietary, all-in-one closed-source suite.", link: "Step 2 Result A" },
-	{ text: "Explore Open-Source options and specialized implementation partners.", link: "Step 2 Result B" },
-	{ text: "Build a 'cobbled-together' solution using existing tools like SharePoint and Excel.", link: "Step 2 Result C" }
+	{ text: "Specialist all-in-one closed-source solutions.", integrity: 1, budget: -1000, link: "S2Ra" },
+	{ text: "Open-Source options with specialized implementation partners.", integrity: 1, budget: -2000, link: "S2Rb" },
+	{ text: "Using existing software such as Sharepoint, Teams or Salesforce.", integrity: -1, budget: -500, link: "S2Rc" }
 ]>>
-<<set _choices.shuffle()>>\
-<<for _i to 0; _i lt _choices.length; _i++>>
-* [[_choices[_i].text|_choices[_i].link]]
-<</for>>
+<<randomChoices _choices>>
 
-:: Step 2 Result A
-!!Consequences
- Fast setup, but you are "locked in." Moving data or customizing features in the future will be very expensive.
-<<set $score += 0>>
-[[Continue to Step 3|Step 3]]
+:: S2Ra
+<<set _statusText = [{text:"You've narrowed the solution type. Working with a specialist, commercial solution provider allows you to leverage their expertise and reduce implementation risk."}] >>
+<<Status _statusText>>
 
-:: Step 2 Result B
-!!Consequences
- Higher transparency and no vendor lock-in. You align with open standards, though you need to vet the partner carefully.
-<<set $score += 2>>
-[[Continue to Step 3|Step 3]]
+[[Step 3: The Long List|Step 3]]
 
-:: Step 2 Result C
-!!Consequences
- Saves money now, but it's not robust. It will likely crash once you hit high concurrent user numbers.
-<<set $score -= 2>>
-[[Continue to Step 3|Step 3]]
+:: S2Rb
+<<set _statusText = [{text:"You've narrowed the solution type. Open-source implementation often requires a higher initial investment in partners but may offer a better long-term fit if managed correctly."}] >>
+<<Status _statusText>>
 
+[[Step 3: The Long List|Step 3]]
+
+:: S2Rc
+<<set _statusText = [{text:"Using your existing software is a valid option, but it may not fully address the strategic needs of your organization."}] >>
+<<Status _statusText>>
+
+[[Step 3: The Long List|Step 3]]
 
 :: Step 3
-!! Step 3: Make the Long List
-Where are you gathering your list of potential LMS providers?
-
+<h2>Step 3: Make the Long List</h2>
+<p>Where are you looking for candidates?</p>
 <<set _choices = [
-	{ text: "Search engine ads and 'Top 10' sponsored comparison sites.", link: "Step 3 Result A" },
-	{ text: "Use 'Alternative to' searches and reach out to your peer networks for real feedback.", link: "Step 3 Result B" },
-	{ text: "Filter only for the most fashionable, 'hot' technology like AI-only platforms.", link: "Step 3 Result C" }
+	{ text: "Search engine ads and sponsored 'Top 10' lists.", integrity: -1, budget: -50, link: "S3Ra" },
+	{ text: "Peer networks, analyst reports and 'Alternative to' searches.", integrity: 2, budget: -100, link: "S3Rb" },
+	{ text: "Visit an industry conference or trade show.", integrity: 0, budget: -300, link: "S3Rc" }
 ]>>
-<<set _choices.shuffle()>>\
-<<for _i to 0; _i lt _choices.length; _i++>>
-* [[_choices[_i].text|_choices[_i].link]]
-<</for>>
+<<randomChoices _choices>>
 
-:: Step 3 Result A
-!!Consequences
- You only see vendors with massive marketing budgets. You likely miss the niche providers who actually solve your problem.
-<<set $score -= 1>>
-[[Continue to Step 4|Step 4]]
+:: S3Ra
+<<set _statusText = [{text:"You've found the suppliers that have the largest market presence, but their solutions may not be the best fit for your specific needs."}] >>
+<<Status _statusText>>
 
-:: Step 3 Result B
-!!Consequences
- You get a balanced list. Peer feedback helps you identify "down-to-earth" suppliers who fit your culture.
-<<set $score += 2>>
-[[Continue to Step 4|Step 4]]
+[[Step 4: User Scenarios|Step 4]]
 
-:: Step 3 Result C
-!!Consequences
- You get a list of "glitzy" products that might lack the basic stability or accessibility your organization requires.
-<<set $score += 0>>
-[[Continue to Step 4|Step 4]]
+:: S3Rb
+<<set _statusText = [{text:"You've found the suppliers that are recommended by peers and analysts, which may provide more reliable insights into their suitability for your needs."}] >>
+<<Status _statusText>>
 
+[[Step 4: User Scenarios|Step 4]]
+
+:: S3Rc
+<<set _statusText = [{text:"You've found the suppliers that are present at industry conferences or trade shows, which may provide valuable insights and networking opportunities."}] >>
+<<Status _statusText>>
+
+[[Step 4: User Scenarios|Step 4]]
 
 :: Step 4
-!! Step 4: Create User Scenarios
-How will you show the suppliers what you actually need the software to do?
-
+<h2>Step 4: Prepare to test the solutions</h2>
+<p>How will you test the software meets your requirements?</p>
 <<set _choices = [
-	{ text: "Send a massive checklist of 200+ features for them to tick Yes/No.", link: "Step 4 Result A" },
-	{ text: "Write 3-4 short narrative stories describing an end-to-end process (e.g., onboarding).", link: "Step 4 Result B" },
-	{ text: "Focus primarily on technical uptime, API documentation, and server security.", link: "Step 4 Result C" }
+	{ text: "Checklist of features and non-functional specifications such as performance, security, and data protection.", integrity: -1, budget: -400, link: "S4Ra" },
+	{ text: "Narrative stories for end-to-end testing from the user's perspective.", integrity: 2, budget: -800, link: "S4Rb" },
+	{ text: "Use the suppliers' comparison charts", integrity: -2, budget: -100, link: "S4Rc" }
 ]>>
-<<set _choices.shuffle()>>\
-<<for _i to 0; _i lt _choices.length; _i++>>
-* [[_choices[_i].text|_choices[_i].link]]
-<</for>>
+<<randomChoices _choices>>
 
-:: Step 4 Result A
-!!Consequences
- Every vendor ticks "Yes." You learn nothing about the actual workflow, leading to "bite-back" during implementation.
-<<set $score -= 2>>
-[[Continue to Step 5|Step 5]]
+:: S4Ra
+<<set _statusText = [{text:"Features and specifications are important, but they don't tell the whole story. User stories provide a more holistic view of how the software will meet the needs of your users and organization."}] >>
+<<Status _statusText>>
 
-:: Step 4 Result B
-!!Consequences
- Success. Suppliers must demonstrate the end-to-end experience. You see the friction points before you spend a penny.
-<<set $score += 2>>
-[[Continue to Step 5|Step 5]]
+[[Step 5: Requirements|Step 5]]
 
-:: Step 4 Result C
-!!Consequences
- IT is happy with the security, but the system is so hard to use that trainers refuse to upload content.
-<<set $score += 0>>
-[[Continue to Step 5|Step 5]]
+:: S4Rb
+<<set _statusText = [{text:"User stories provide a more holistic view of how the software will meet the needs of your users and organization. This can help identify potential issues and ensure a better fit."}] >>
+<<Status _statusText>>
 
+[[Step 5: Requirements|Step 5]]
+
+:: S4Rc
+<<set _statusText = [{text:"Supplier comparison charts can provide a quick, albeit biased, overview, but they may not capture the nuances of how the software will perform in your specific environment."}] >>
+<<Status _statusText>>
+
+[[Step 5: Requirements|Step 5]]
 
 :: Step 5
-!! Step 5: List the Requirements
-You are drafting the first pass of your requirements. How do you prioritize?
-
+!!Step 5: List the Requirements
+How do you prioritize?
 <<set _choices = [
-	{ text: "Mark every single requirement as a 'Critical Must-Have'.", link: "Step 5 Result A" },
-	{ text: "Use the MoSCoW model (Must, Should, Could, Won't have) for clear prioritization.", link: "Step 5 Result B" },
-	{ text: "Base all requirements on what your current (old) system does today.", link: "Step 5 Result C" }
-]>>
+	{ text: "Mark everything as a 'Critical Must-Have'.", integrity: -1, budget: 0, link: "S5R" },
+	{ text: "Use the MoSCoW model (Must/Should/Could).", integrity: 2, budget: -50, link: "S5R" },
+	{ text: "Copy the requirements of your current old system.", integrity: -1, budget: -20, link: "S5R" }
+]>>\
 <<set _choices.shuffle()>>\
-<<for _i to 0; _i lt _choices.length; _i++>>
-* [[_choices[_i].text|_choices[_i].link]]
-<</for>>
+<<randomChoices _choices>>
 
-:: Step 5 Result A
-!!Consequences
- No supplier can meet every requirement. You end up with over-promised, expensive "Frankenstein" proposals.
-<<set $score -= 1>>
-[[Continue to Step 6|Step 6]]
+:: S5R
+!!Status
+MoSCoW prioritization helps you focus, even if it took a few meetings to finalize.
 
-:: Step 5 Result B
-!!Consequences
- You provide clear guidance to the market. This leads to more honest and competitive bids that fit your budget.
-<<set $score += 2>>
-[[Continue to Step 6|Step 6]]
-
-:: Step 5 Result C
-!!Consequences
- You successfully spend a fortune to replicate your current problems in a newer interface. No innovation occurred.
-<<set $score -= 1>>
-[[Continue to Step 6|Step 6]]
-
+[[Step 6: Short List|Step 6]]
 
 :: Step 6
-!! Step 6: Make the Short List
-You have 20 options. You need to narrow it down to 5-7.
-
+!!Step 6: Make the Short List
+How do you narrow 20 down to 5?
 <<set _choices = [
-	{ text: "Shortlist based on 'gut feel' and the modern look of their website.", link: "Step 6 Result A" },
-	{ text: "Rigorous filtering: Disqualify any supplier that fails a single 'Must-Have'.", link: "Step 6 Result B" },
-	{ text: "Shortlist based purely on the lowest initial price estimates.", link: "Step 6 Result C" }
-]>>
+	{ text: "Gut feel and website aesthetics.", integrity: 0, budget: 0, link: "S6R" },
+	{ text: "Filter against 'Must-Have' items.", integrity: 2, budget: -50, link: "S6R" },
+	{ text: "Shortlist based on lowest price estimates.", integrity: -2, budget: 0, link: "S6R" }
+]>>\
 <<set _choices.shuffle()>>\
-<<for _i to 0; _i lt _choices.length; _i++>>
-* [[_choices[_i].text|_choices[_i].link]]
-<</for>>
+<<randomChoices _choices>>
 
-:: Step 6 Result A
-!!Consequences
- Risky. You might discard a stable partner just because their marketing site is slightly dated.
-<<set $score += 0>>
-[[Continue to Step 7|Step 7]]
+:: S6R
+!!Status
+The scientific approach is defensible but requires manual auditing of supplier specs.
 
-:: Step 6 Result B
-!!Consequences
- A scientific, defensible approach. You ensure the remaining vendors can actually handle your core needs.
-<<set $score += 2>>
-[[Continue to Step 7|Step 7]]
-
-:: Step 6 Result C
-!!Consequences
- You are left with budget options that likely lack the support or scalability you need long-term.
-<<set $score -= 2>>
-[[Continue to Step 7|Step 7]]
-
+[[Step 7: Competitive Dialogue|Step 7]]
 
 :: Step 7
-!! Step 7: Competitive Dialogue
-It's time to talk to the finalists. How does Alex engage them?
+!!Step 7: Competitive Dialogue
+This is the most critical stage. How does Alex handle the finalists?
 
 <<set _choices = [
-	{ text: "Use a single RFP and score the written responses to pick the winner.", link: "Step 7 Result A" },
-	{ text: "Run iterative 'Deep Dives' and a 4-week test drive to tease out assumptions.", link: "Step 7 Result B" },
-	{ text: "Let each vendor do a standard 60-minute sales demonstration of their choice.", link: "Step 7 Result C" }
+	{ text: "Single RFP and score the documents.", integrity: -2, budget: -50, link: "S7R" },
+	{ text: "Iterative 'Deep Dives' and a 4-week test drive.", integrity: 3, budget: -250, link: "S7R" },
+	{ text: "Standard 60-minute sales demonstrations.", integrity: 0, budget: -50, link: "S7R" }
 ]>>
 <<set _choices.shuffle()>>\
-<<for _i to 0; _i lt _choices.length; _i++>>
-* [[_choices[_i].text|_choices[_i].link]]
-<</for>>
+<<randomChoices _choices>>
 
-:: Step 7 Result A
-!!Consequences
- Both parties work in the dark. Assumptions are hidden until implementation, when they turn into expensive delays.
-<<set $score -= 2>>
-[[Continue to Step 8|Step 8]]
+:: S7R
+!!Status
+The Deep Dive is expensive in terms of staff time, but it's the only way to avoid "bite-back."
 
-:: Step 7 Result B
-!!Consequences
- Highly reliable. You know exactly what you are buying, and the vendor understands what they are delivering.
-<<set $score += 2>>
-[[Continue to Step 8|Step 8]]
-
-:: Step 7 Result C
-!!Consequences
- You bought the "dream" demo but live with a "reality" that requires features you didn't actually purchase.
-<<set $score += 0>>
-[[Continue to Step 8|Step 8]]
-
+[[Step 8: Negotiation|Step 8]]
 
 :: Step 8
-!! Step 8: Negotiation
-The final deal is on the table. How do you handle it?
-
+!!Step 8: Negotiation
+The finish line. How do you close the deal?
 <<set _choices = [
-	{ text: "Demand a 20% discount or walk away immediately.", link: "Step 8 Result A" },
-	{ text: "Negotiate on multiple levers: license recycling, contract length, and break clauses.", link: "Step 8 Result B" },
-	{ text: "Sign the vendor's standard boilerplate contract to get started faster.", link: "Step 8 Result C" }
-]>>
+	{ text: "Demand a massive discount or walk away.", integrity: 0, budget: +500, link: "End" },
+	{ text: "Negotiate on levers (recycling, break clauses).", integrity: 2, budget: -100, link: "End" },
+	{ text: "Sign the standard boilerplate contract immediately.", integrity: -1, budget: 0, link: "End" }
+]>>\
 <<set _choices.shuffle()>>\
-<<for _i to 0; _i lt _choices.length; _i++>>
-* [[_choices[_i].text|_choices[_i].link]]
-<</for>>
-
-:: Step 8 Result A
-!!Consequences
- The vendor agrees, but they put you on "Bronze" support and charge extra for every small request later.
-<<set $score += 0>>
-[[Finish the Scenario|End]]
-
-:: Step 8 Result B
-!!Consequences
- A win-win. You have the safety of a break clause, and the vendor has a sustainable deal.
-<<set $score += 2>>
-[[Finish the Scenario|End]]
-
-:: Step 8 Result C
-!!Consequences
- No exit strategy. You are legally tied to this vendor for 3 years, even if their service fails in month six.
-<<set $score -= 1>>
-[[Finish the Scenario|End]]
+<<randomChoices _choices>>
 
 
 :: End
-!! Final Results
-Alex’s procurement journey has come to an end.
+!!Final Results
+''Strategic Integrity:'' $integrity / 10
+''Budget Remaining:'' £$budget
 
-**Procurement Mastery Score: $score**
-
-<<if $score gte 12>>
-!!!!!! Result: The Strategic Professional
-Alex is a hero. By building a business case and using competitive dialogue, you found a system that fits, works, and will last.
-<<elseif $score gte 5>>
-!!!!!! Result: The Functional Buyer
-The LMS is in place and it works, but there were some missed opportunities for innovation and better contractual safety.
+<<if $integrity gte 12>>
+!!!Result: Strategic Hero
+You spent your budget wisely on the *process* rather than just the software. You have a solution that fits and a contract that protects you.
+<<elseif $budget lt 500>>
+!!!Result: Bankrupt Strategist
+You followed the book perfectly, but you ran out of money! The project is stalled because you can't pay the vendor's first invoice.
 <<else>>
-!!!!!! Result: The Procurement Disaster
-The "shopping list" approach failed. Alex has a system that doesn't solve the core problems, and IT is currently dealing with "bite-back" implementation errors.
+!!!Result: Middle of the Pack
+The LMS is okay, but you'll likely face some "bite-back" issues in year two because of skipped steps.
 <</if>>
 
-[[Restart the Journey?|Start]]
+<<button "Restart">>
+	<<run Engine.restart()>>
+<</button>>

@@ -1,0 +1,23 @@
+:: ProjectWidgets [widget]
+<<widget "randomChoices">>
+    <<set _choices = $args[0]>>
+    <<set _choices.shuffle()>>
+    <ul>
+    <<for _i to 0; _i lt _choices.length; _i++>>
+        <<capture _i>>
+        <li><<link [[_choices[_i].text|_choices[_i].link]]>>
+        <<set $integrity += _choices[_i].integrity>>
+        <<set $budget += _choices[_i].budget>>
+    <</link>></li>
+    <</capture>>
+    <</for>>
+    </ul>
+<</widget>>
+
+<<widget "Status">>
+    <<set _statusText = $args[0]>>
+        <h2>Status</h2>
+        <p>_statusText[0].text</p>
+        
+        <p>Budget Remaining: £$budget</p>
+<</widget>>

@@ -1,8 +1,18 @@
-#story-caption {
-    padding: 10px;
-    color: #eee;
+.meter-container {
+	background-color: #333;
+	border: 1px solid #555;
+	border-radius: 8px;
+	height: 15px;
+	width: 100%;
+	margin: 5px 0;
 }
-
-#score-bar {
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+.meter-bar {
+	height: 100%;
+	border-radius: 8px;
+	transition: width 0.5s ease-in-out, background-color 0.5s;
+}
+.meter-label {
+	font-size: 0.85em;
+	font-weight: bold;
+	display: block;
 }
