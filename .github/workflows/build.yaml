@@ -9,21 +9,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      # Updated to v4 for better reliability
+      - uses: actions/checkout@v4
 
       - name: Use Go 1.23
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v5
         with:
-          go-version: 1.23.x
+          go-version: '1.23.x'
 
       - name: build game
         run: |
-          go get github.com/tmedwards/tweego
+          # 1. Use 'go install' with @latest to install tools globally
+          go install github.com/tmedwards/tweego@latest
+          
+          # 2. Add the Go bin directory to the PATH so the shell finds 'tweego'
           export PATH=$PATH:$(go env GOPATH)/bin
+          
+          # 3. Create the output directory before building
+          mkdir -p dist
           tweego story.twee -o dist/index.html
 
       - name: Deploy to Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4 # Updated to v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
