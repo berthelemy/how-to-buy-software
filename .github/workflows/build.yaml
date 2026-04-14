@@ -19,16 +19,16 @@ jobs:
 
       - name: build game
         run: |
-          # 1. Install Tweego
-          go install github.com/tmedwards/tweego@latest
+          # Disable module mode temporarily to install this legacy package
+          GO111MODULE=off go get -v github.com/tmedwards/tweego
           
-          # 2. Define the path to the Go bin directory
+          # Map the path
           GOBIN=$(go env GOPATH)/bin
           
-          # 3. Create the output directory
+          # Create output dir
           mkdir -p dist
           
-          # 4. Run tweego using the absolute path to avoid PATH issues
+          # Run the build
           $GOBIN/tweego story.twee -o dist/index.html
 
       - name: Deploy to Pages
