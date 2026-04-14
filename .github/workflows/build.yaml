@@ -15,7 +15,8 @@ jobs:
       - name: Use Go 1.23
         uses: actions/setup-go@v5
         with:
-          go-version: '1.23.x'
+          go-version: '1.23'
+          cache: false # Temporary: helps verify if the error is version-related vs cache-related
 
       - name: build game
         run: |
