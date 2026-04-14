@@ -33,7 +33,7 @@ jobs:
           
           # 4. Run the build
           # Tweego will now look inside .storyformats and find sugarcube-2-37-3
-          ./tweego src/story.twee -o dist/index.html
+          ./tweego src -o dist/index.html
 
       - name: Deploy to Pages
         uses: peaceiris/actions-gh-pages@v4 # Updated to v4
