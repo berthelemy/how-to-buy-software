@@ -1,5 +1,5 @@
 :: StoryTitle
-Alex's LMS Procurement: The Strategic Journey
+Software Procurement: The Strategic Journey
 
 :: StoryData
 {
@@ -12,27 +12,26 @@ Alex's LMS Procurement: The Strategic Journey
 :: StoryCaption
 <span class="meter-label">Strategic Integrity</span>
 <div class="meter-container">
-	<div class="meter-bar" @style="'width: ' + Math.clamp(($integrity * 10), 0, 100) + '%; background-color: ' + ($integrity > 6 ? '#4CAF50' : '#FF9800')"></div>
+	<div class="meter-bar" @style="'width: ' + Math.clamp(($integrity * 10), 0, 100) + '%; background-color: ' + ($integrity >= 4 ? '#4CAF50' : '#F44336')"></div>
 </div>
 
 <span class="meter-label">Budget Remaining</span>
 <div class="meter-container">
-	<div class="meter-bar" @style="'width: ' + ($budget / 50) + '%; background-color: ' + ($budget < 1000 ? '#f44336' : '#2196F3')"></div>
+	<div class="meter-bar" @style="'width: ' + ($budget / 50) + '%; background-color: ' + ($budget < 1000 ? '#f44336' : '#4CAF50')"></div>
 </div>
 <small>Budget: £$budget</small>
 
 :: Start
 <h2>The Mission</h2>
 <p>You are Alex, a project manager for a medium-sized company. You've been asked to procure a new Learning Management System (LMS) for your organization.</p>
-<p>You have a £$budget budget and a deadline. Every choice you make will affect:</p>
+<p>You have an initial budget of £$budget. This will need to cover the procurement process and initial implementation costs.</p>
+<p>Every choice you make will affect:</p>
 <ol>
 <li> The ''Strategic Integrity'' of the project (how well the solution fits)</li>
 <li> Your ''Budget''</li>
 </ol>
 
-<p>Your strategic integrity rating is shown in the panel on the left.</p>
-<p>You have an initial budget of £$budget. This will need to cover the procurement process and initial implementation costs.</p>
-<p>You can also track the budget in the left hand panel.</p>
+<p>Your strategic integrity rating and budget are shown in the panel on the left.</p>
 
 <p>Strategic choices often cost more upfront but prevent "bite-back" later.</p>
 
@@ -42,9 +41,9 @@ Alex's LMS Procurement: The Strategic Journey
 <h2>Step 1: Identify the Problem</h2>
 <p>How do you start the process?</p>
 <<set _choices = [
-	{ text: "Focus on technical glitches and complaints about the user experience.", integrity: -1, budget: 0, link: "S1Ra" },
-	{ text: "Define strategic problems and measurements.", integrity: 2, budget: -500, link: "S1R" },
-	{ text: "Prioritize look-and-feel based on user complaints.", integrity: -2, budget: -0, link: "S1Ra" }
+	{ text: "Focus on technical glitches and complaints about the user experience.", integrity: -1, budget: -100, link: "S1Ra" },
+	{ text: "Define your organisation's strategic problems and measurements.", integrity: 2, budget: -500, link: "S1R" },
+	{ text: "Prioritize look-and-feel based on user complaints.", integrity: -2, budget: -50, link: "S1Ra" }
 ]>>
 <<randomChoices _choices>>
 
@@ -93,7 +92,7 @@ Alex's LMS Procurement: The Strategic Journey
 <p>Where are you looking for candidates?</p>
 <<set _choices = [
 	{ text: "Search engine ads and sponsored 'Top 10' lists.", integrity: -1, budget: -50, link: "S3Ra" },
-	{ text: "Peer networks, analyst reports and 'Alternative to' searches.", integrity: 2, budget: -100, link: "S3Rb" },
+	{ text: "Peer networks, analyst reports and 'Alternative to' searches.", integrity: 2, budget: -150, link: "S3Rb" },
 	{ text: "Visit an industry conference or trade show.", integrity: 0, budget: -300, link: "S3Rc" }
 ]>>
 <<randomChoices _choices>>
@@ -120,8 +119,8 @@ Alex's LMS Procurement: The Strategic Journey
 <h2>Step 4: Prepare to test the solutions</h2>
 <p>How will you test the software meets your requirements?</p>
 <<set _choices = [
-	{ text: "Checklist of features and non-functional specifications such as performance, security, and data protection.", integrity: -1, budget: -400, link: "S4Ra" },
-	{ text: "Narrative stories for end-to-end testing from the user's perspective.", integrity: 2, budget: -800, link: "S4Rb" },
+	{ text: "Create a checklist of features and non-functional specifications such as performance, security, and data protection.", integrity: -1, budget: -400, link: "S4Ra" },
+	{ text: "Prepare a set of narrative stories for end-to-end testing from the user's perspective.", integrity: 2, budget: -825, link: "S4Rb" },
 	{ text: "Use the suppliers' comparison charts", integrity: -2, budget: -100, link: "S4Rc" }
 ]>>
 <<randomChoices _choices>>
@@ -133,7 +132,7 @@ Alex's LMS Procurement: The Strategic Journey
 [[Step 5: Requirements|Step 5]]
 
 :: S4Rb
-<<set _statusText = [{text:"User stories provide a more holistic view of how the software will meet the needs of your users and organization. This can help identify potential issues and ensure a better fit."}] >>
+<<set _statusText = [{text:"User scenarios provide a more holistic view of how the software will meet the needs of your users and organization. This can help identify potential issues and ensure a better fit."}] >>
 <<Status _statusText>>
 
 [[Step 5: Requirements|Step 5]]
@@ -145,83 +144,110 @@ Alex's LMS Procurement: The Strategic Journey
 [[Step 5: Requirements|Step 5]]
 
 :: Step 5
-!!Step 5: List the Requirements
-How do you prioritize?
+<h2>Step 5: List the Requirements</h2>
+<p>Once you have your user stories, it's time to use them to create a list of requirements. What should these include?</p>
 <<set _choices = [
-	{ text: "Mark everything as a 'Critical Must-Have'.", integrity: -1, budget: 0, link: "S5R" },
-	{ text: "Use the MoSCoW model (Must/Should/Could).", integrity: 2, budget: -50, link: "S5R" },
-	{ text: "Copy the requirements of your current old system.", integrity: -1, budget: -20, link: "S5R" }
-]>>\
-<<set _choices.shuffle()>>\
+	{ text: "A prioritized list of functional and non-functional requirements, and the rationale behind each.", integrity: 2, budget: -400, link: "S5Ra" },
+	{ text: "A list of features based on what you've seen in the systems you've found during your research  ", integrity: 1, budget: -250, link: "S5Rb" },
+	{ text: "The requirements of your current system, copied over from the documents created when that was purchased.", integrity: -1, budget: -50, link: "S5Rc" }
+]>>
 <<randomChoices _choices>>
 
-:: S5R
-!!Status
-MoSCoW prioritization helps you focus, even if it took a few meetings to finalize.
+:: S5Ra
+<<set _statusText = [{text:"A prioritized list of requirements helps you focus on what's most important, ensuring that critical needs are met while allowing flexibility for less essential features."}] >>
+<<Status _statusText>>
+
+[[Step 6: Short List|Step 6]]
+
+:: S5Rb
+<<set _statusText = [{text:"A list of features based on your research provides a snapshot of what's available, but it may not fully align with your organization's specific needs and priorities."}] >>
+<<Status _statusText>>
+
+[[Step 6: Short List|Step 6]]
+
+:: S5Rc
+<<set _statusText = [{text:"Copying the requirements of your current system may seem like a shortcut, but it can lead to outdated or irrelevant specifications that don't meet your organization's evolving needs."}] >>
+<<Status _statusText>>
 
 [[Step 6: Short List|Step 6]]
 
 :: Step 6
-!!Step 6: Make the Short List
-How do you narrow 20 down to 5?
+<h2>Step 6: Make the Short List</h2>
+<p>How do you narrow 20 down to 5?</p>
 <<set _choices = [
-	{ text: "Gut feel and website aesthetics.", integrity: 0, budget: 0, link: "S6R" },
-	{ text: "Filter against 'Must-Have' items.", integrity: 2, budget: -50, link: "S6R" },
-	{ text: "Shortlist based on lowest price estimates.", integrity: -2, budget: 0, link: "S6R" }
-]>>\
-<<set _choices.shuffle()>>\
+	{ text: "Filter out any whose websites are outdated or unprofessional.", integrity: -1, budget: -50, link: "S6Ra" },
+	{ text: "Filter out any that fail to meet 'Must-Have' criteria.", integrity: 2, budget: -200, link: "S6Rb" },
+	{ text: "Filter the solutions based on their estimated costs.", integrity: -2, budget: -50, link: "S6Rc" }
+]>>
 <<randomChoices _choices>>
 
-:: S6R
-!!Status
-The scientific approach is defensible but requires manual auditing of supplier specs.
+:: S6Ra
+<<set _statusText = [{text:"The state of a supplier's website can provide some insight into their professionalism, but it doesn't necessarily reflect the quality of their software or services."}] >>
+<<Status _statusText>>
+[[Step 7: Competitive Dialogue|Step 7]]
 
+:: S6Rb
+<<set _statusText = [{text:"Filtering out solutions that fail to meet 'Must-Have' criteria ensures that only viable options remain, focusing your efforts on the most critical requirements."}] >>
+<<Status _statusText>>
+[[Step 7: Competitive Dialogue|Step 7]]
+
+:: S6Rc
+<<set _statusText = [{text:"Filtering solutions based on their estimated costs helps manage your budget, but it shouldn't be the sole criterion for selection."}] >>
+<<Status _statusText>>
 [[Step 7: Competitive Dialogue|Step 7]]
 
 :: Step 7
-!!Step 7: Competitive Dialogue
-This is the most critical stage. How does Alex handle the finalists?
+<h2>Step 7: Competitive Dialogue</h2>
+<p>This is the most critical stage. How do you handle the finalists?</p>
 
 <<set _choices = [
-	{ text: "Single RFP and score the documents.", integrity: -2, budget: -50, link: "S7R" },
-	{ text: "Iterative 'Deep Dives' and a 4-week test drive.", integrity: 3, budget: -250, link: "S7R" },
-	{ text: "Standard 60-minute sales demonstrations.", integrity: 0, budget: -50, link: "S7R" }
+	{ text: "Request a proposal from each of the short-listed suppliers and score the documents.", integrity: -2, budget: -200, link: "S7Ra" },
+	{ text: "Work through an iterative series of presentations and test drives, followed by an RFP", integrity: 3, budget: -700, link: "S7Rb" },
+	{ text: "Request a sales demonstration based on the scenarios, plus a proposal to score", integrity: -1, budget: -300, link: "S7Rc" }
 ]>>
-<<set _choices.shuffle()>>\
 <<randomChoices _choices>>
 
-:: S7R
-!!Status
-The Deep Dive is expensive in terms of staff time, but it's the only way to avoid "bite-back."
+:: S7Ra
+<<set _statusText = [{text:"Requesting a proposal from each of the short-listed suppliers and scoring the documents provides a structured way to compare options, but it often results in mis-matched expectations and overlooked nuances."}] >>
+<<Status _statusText>>
+[[Step 8: Negotiation|Step 8]]
+
+:: S7Rb
+<<set _statusText = [{text:"An iterative series of presentations and test drives allows for a deeper understanding of how each solution performs in real-world scenarios, leading to a more informed decision."}] >>
+<<Status _statusText>>
+[[Step 8: Negotiation|Step 8]]
+
+:: S7Rc
+<<set _statusText = [{text:"Requesting a sales demonstration based on the scenarios, plus a proposal to score, provides a more interactive way to evaluate the solutions. However, it may not capture all the nuances of how the software will perform in your specific environment."}] >>
+<<Status _statusText>>
 
 [[Step 8: Negotiation|Step 8]]
 
 :: Step 8
-!!Step 8: Negotiation
-The finish line. How do you close the deal?
+<h2>Step 8: Negotiation</h2>
+<p>The finish line. How do you close the deal?</p>
 <<set _choices = [
-	{ text: "Demand a massive discount or walk away.", integrity: 0, budget: +500, link: "End" },
-	{ text: "Negotiate on levers (recycling, break clauses).", integrity: 2, budget: -100, link: "End" },
+	{ text: "Demand a massive discount or walk away.", integrity: -1, budget: +500, link: "End" },
+	{ text: "Negotiate on levers (eg. recycling licenses, break clauses).", integrity: 2, budget: -250, link: "End" },
 	{ text: "Sign the standard boilerplate contract immediately.", integrity: -1, budget: 0, link: "End" }
-]>>\
-<<set _choices.shuffle()>>\
+]>>
 <<randomChoices _choices>>
 
-
 :: End
-!!Final Results
-''Strategic Integrity:'' $integrity / 10
-''Budget Remaining:'' £$budget
+<h2>Final Results</h2>
+<p><strong>Strategic Integrity:</strong> $integrity / 10</p>
+<p><strong>Budget Remaining:</strong> £$budget</p>
 
-<<if $integrity gte 12>>
-!!!Result: Strategic Hero
-You spent your budget wisely on the *process* rather than just the software. You have a solution that fits and a contract that protects you.
-<<elseif $budget lt 500>>
-!!!Result: Bankrupt Strategist
-You followed the book perfectly, but you ran out of money! The project is stalled because you can't pay the vendor's first invoice.
+<<if $integrity gte 10 and $budget gte 1000>>
+<h3>Result: Strategic Hero</h3>
+<p>You spent your budget wisely on the <strong>process</strong> rather than just the software.</p>
+<p>You have a solution that fits and a contract that protects you.</p>
+<<elseif $budget lte 1000>>
+<h3>Result: Bankrupt Strategist</h3>
+<p>You followed the book perfectly, but you ran out of money! The project is stalled because you can't pay the vendor's first invoice.</p>
 <<else>>
-!!!Result: Middle of the Pack
-The LMS is okay, but you'll likely face some "bite-back" issues in year two because of skipped steps.
+<h3>Result: Short Term Thinker</h3>
+<p>You are likely to face some "bite-back" issues because of skipped steps. At least you've not spent much of your budget.</p>
 <</if>>
 
 <<button "Restart">>
