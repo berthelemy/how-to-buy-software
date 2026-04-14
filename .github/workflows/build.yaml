@@ -19,18 +19,20 @@ jobs:
 
       - name: build game
         run: |
-          # 1. Download the pre-compiled Tweego binary (Linux 64-bit)
-          # Using curl to grab the release directly avoids all Go module version errors
+          # 1. Download and Unzip Tweego
           curl -L https://github.com/tmedwards/tweego/releases/download/v2.1.1/tweego-2.1.1-linux-x64.zip -o tweego.zip
-          
-          # 2. Unzip it
-          unzip tweego.zip
+          unzip -o tweego.zip
           chmod +x tweego
           
-          # 3. Create the output directory
+          # 2. Create the output directory
           mkdir -p dist
           
-          # 4. Run the local binary
+          # 3. Tell Tweego where your repo's storyformats are
+          # This points to the hidden folder in your repository
+          export TWEEGO_PATH=$(pwd)/.storyformats
+          
+          # 4. Run the build
+          # Tweego will now look inside .storyformats and find sugarcube-2-37-3
           ./tweego story.twee -o dist/index.html
 
       - name: Deploy to Pages
