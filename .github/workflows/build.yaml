@@ -20,15 +20,17 @@ jobs:
 
       - name: build game
         run: |
-          # 1. Use 'go install' with @latest to install tools globally
+          # 1. Install Tweego
           go install github.com/tmedwards/tweego@latest
           
-          # 2. Add the Go bin directory to the PATH so the shell finds 'tweego'
-          export PATH=$PATH:$(go env GOPATH)/bin
+          # 2. Define the path to the Go bin directory
+          GOBIN=$(go env GOPATH)/bin
           
-          # 3. Create the output directory before building
+          # 3. Create the output directory
           mkdir -p dist
-          tweego story.twee -o dist/index.html
+          
+          # 4. Run tweego using the absolute path to avoid PATH issues
+          $GOBIN/tweego story.twee -o dist/index.html
 
       - name: Deploy to Pages
         uses: peaceiris/actions-gh-pages@v4 # Updated to v4
