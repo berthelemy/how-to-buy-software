@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D// --><tw-storydata name="Software Procurement: The Strategic Journey" startnode="4" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">.meter-container {
+	<!-- UUID://A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D// --><tw-storydata name="Software Procurement: The Strategic Journey" startnode="3" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="A1B2C3D4-E5F6-4A7B-8C9D-0E1F2A3B4C5D" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">.meter-container {
 	background-color: #333;
 	border: 1px solid #555;
 	border-radius: 8px;
@@ -122,7 +122,11 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 	font-weight: bold;
 	display: block;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">Config.passages.nobr = true;
-Config.history.controls = false;</script><tw-passagedata pid="1" name="ProjectWidgets" tags="widget" position="100,100" size="100,100">&lt;&lt;widget &quot;randomChoices&quot;&gt;&gt;
+Config.history.controls = false;
+
+// This ensures the variables exist even if StoryInit hasn't run yet
+State.variables.integrity = 5;
+State.variables.budget = 5000;</script><tw-passagedata pid="1" name="ProjectWidgets" tags="widget" position="100,100" size="100,100">&lt;&lt;widget &quot;randomChoices&quot;&gt;&gt;
     &lt;&lt;set _choices = $args[0]&gt;&gt;
     &lt;&lt;set _choices.shuffle()&gt;&gt;
     &lt;ul&gt;
@@ -143,8 +147,7 @@ Config.history.controls = false;</script><tw-passagedata pid="1" name="ProjectWi
         &lt;p&gt;_statusText[0].text&lt;/p&gt;
         
         &lt;p&gt;Budget Remaining: £$budget&lt;/p&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryInit" tags="" position="225,100" size="100,100">&lt;&lt;set $integrity = 5&gt;&gt;
-&lt;&lt;set $budget = 5000&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryCaption" tags="" position="350,100" size="100,100">&lt;span class=&quot;meter-label&quot;&gt;Strategic Integrity&lt;/span&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryCaption" tags="" position="225,100" size="100,100">&lt;span class=&quot;meter-label&quot;&gt;Strategic Integrity&lt;/span&gt;
 &lt;div class=&quot;meter-container&quot;&gt;
 	&lt;div class=&quot;meter-bar&quot; @style=&quot;&#39;width: &#39; + Math.clamp(($integrity * 10), 0, 100) + &#39;%; background-color: &#39; + ($integrity &gt;= 4 ? &#39;#4CAF50&#39; : &#39;#F44336&#39;)&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -153,7 +156,7 @@ Config.history.controls = false;</script><tw-passagedata pid="1" name="ProjectWi
 &lt;div class=&quot;meter-container&quot;&gt;
 	&lt;div class=&quot;meter-bar&quot; @style=&quot;&#39;width: &#39; + ($budget / 50) + &#39;%; background-color: &#39; + ($budget &lt; 1000 ? &#39;#f44336&#39; : &#39;#4CAF50&#39;)&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;small&gt;Budget: £$budget&lt;/small&gt;</tw-passagedata><tw-passagedata pid="4" name="Start" tags="" position="475,100" size="100,100">&lt;h2&gt;The Mission&lt;/h2&gt;
+&lt;small&gt;Budget: £$budget&lt;/small&gt;</tw-passagedata><tw-passagedata pid="3" name="Start" tags="" position="350,100" size="100,100">&lt;h2&gt;The Mission&lt;/h2&gt;
 &lt;p&gt;You are Alex, a project manager for a medium-sized company. You&#39;ve been asked to procure a new Learning Management System (LMS) for your organization.&lt;/p&gt;
 &lt;p&gt;You have an initial budget of £$budget. This will need to cover the procurement process and initial implementation costs.&lt;/p&gt;
 &lt;p&gt;Every choice you make will affect:&lt;/p&gt;
@@ -166,97 +169,97 @@ Config.history.controls = false;</script><tw-passagedata pid="1" name="ProjectWi
 
 &lt;p&gt;Strategic choices often cost more upfront but prevent &quot;bite-back&quot; later.&lt;/p&gt;
 
-[[Begin Step 1: Identify the Problem|Step 1]]</tw-passagedata><tw-passagedata pid="5" name="Step 1" tags="" position="600,100" size="100,100">&lt;h2&gt;Step 1: Identify the Problem&lt;/h2&gt;
+[[Begin Step 1: Identify the Problem|Step 1]]</tw-passagedata><tw-passagedata pid="4" name="Step 1" tags="" position="475,100" size="100,100">&lt;h2&gt;Step 1: Identify the Problem&lt;/h2&gt;
 &lt;p&gt;How do you start the process?&lt;/p&gt;
 &lt;&lt;set _choices = [
 	{ text: &quot;Focus on technical glitches and complaints about the user experience.&quot;, integrity: -1, budget: -100, link: &quot;S1Ra&quot; },
 	{ text: &quot;Define your organisation&#39;s strategic problems and measurements.&quot;, integrity: 2, budget: -500, link: &quot;S1R&quot; },
 	{ text: &quot;Prioritize look-and-feel based on user complaints.&quot;, integrity: -2, budget: -50, link: &quot;S1Ra&quot; }
 ]&gt;&gt;
-&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="S1Ra" tags="" position="725,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Focussing on technical issues or the look and feel is easier and cheaper, but it doesn&#39;t address the strategic problems. Expect &#39;bite-back&#39; later.&quot;}] &gt;&gt;
+&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="S1Ra" tags="" position="600,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Focussing on technical issues or the look and feel is easier and cheaper, but it doesn&#39;t address the strategic problems. Expect &#39;bite-back&#39; later.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 2: Identify Solutions|Step 2]]</tw-passagedata><tw-passagedata pid="7" name="S1R" tags="" position="850,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;The investigation stage is complete.Defining strategic problems cost a bit more in time/consultancy, but your integrity is higher.&quot;}] &gt;&gt;
+[[Step 2: Identify Solutions|Step 2]]</tw-passagedata><tw-passagedata pid="6" name="S1R" tags="" position="725,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;The investigation stage is complete.Defining strategic problems cost a bit more in time/consultancy, but your integrity is higher.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 2: Identify Solutions|Step 2]]</tw-passagedata><tw-passagedata pid="8" name="Step 2" tags="" position="975,100" size="100,100">&lt;h2&gt;Step 2: Identify Possible Solutions&lt;/h2&gt;
+[[Step 2: Identify Solutions|Step 2]]</tw-passagedata><tw-passagedata pid="7" name="Step 2" tags="" position="850,100" size="100,100">&lt;h2&gt;Step 2: Identify Possible Solutions&lt;/h2&gt;
 &lt;p&gt;What &quot;landscape&quot; of solutions fits best?&lt;/p&gt;
 &lt;&lt;set _choices = [
 	{ text: &quot;Specialist all-in-one closed-source solutions.&quot;, integrity: 1, budget: -1000, link: &quot;S2Ra&quot; },
 	{ text: &quot;Open-Source options with specialized implementation partners.&quot;, integrity: 1, budget: -2000, link: &quot;S2Rb&quot; },
 	{ text: &quot;Using existing software such as Sharepoint, Teams or Salesforce.&quot;, integrity: -1, budget: -500, link: &quot;S2Rc&quot; }
 ]&gt;&gt;
-&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="S2Ra" tags="" position="1100,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve narrowed the solution type. Working with a specialist, commercial solution provider allows you to leverage their expertise and reduce implementation risk.&quot;}] &gt;&gt;
+&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="S2Ra" tags="" position="975,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve narrowed the solution type. Working with a specialist, commercial solution provider allows you to leverage their expertise and reduce implementation risk.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 3: The Long List|Step 3]]</tw-passagedata><tw-passagedata pid="10" name="S2Rb" tags="" position="1225,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve narrowed the solution type. Open-source implementation often requires a higher initial investment in partners but may offer a better long-term fit if managed correctly.&quot;}] &gt;&gt;
+[[Step 3: The Long List|Step 3]]</tw-passagedata><tw-passagedata pid="9" name="S2Rb" tags="" position="1100,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve narrowed the solution type. Open-source implementation often requires a higher initial investment in partners but may offer a better long-term fit if managed correctly.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 3: The Long List|Step 3]]</tw-passagedata><tw-passagedata pid="11" name="S2Rc" tags="" position="100,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Using your existing software is a valid option, but it may not fully address the strategic needs of your organization.&quot;}] &gt;&gt;
+[[Step 3: The Long List|Step 3]]</tw-passagedata><tw-passagedata pid="10" name="S2Rc" tags="" position="1225,100" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Using your existing software is a valid option, but it may not fully address the strategic needs of your organization.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 3: The Long List|Step 3]]</tw-passagedata><tw-passagedata pid="12" name="Step 3" tags="" position="225,225" size="100,100">&lt;h2&gt;Step 3: Make the Long List&lt;/h2&gt;
+[[Step 3: The Long List|Step 3]]</tw-passagedata><tw-passagedata pid="11" name="Step 3" tags="" position="100,225" size="100,100">&lt;h2&gt;Step 3: Make the Long List&lt;/h2&gt;
 &lt;p&gt;Where are you looking for candidates?&lt;/p&gt;
 &lt;&lt;set _choices = [
 	{ text: &quot;Search engine ads and sponsored &#39;Top 10&#39; lists.&quot;, integrity: -1, budget: -50, link: &quot;S3Ra&quot; },
 	{ text: &quot;Peer networks, analyst reports and &#39;Alternative to&#39; searches.&quot;, integrity: 2, budget: -150, link: &quot;S3Rb&quot; },
 	{ text: &quot;Visit an industry conference or trade show.&quot;, integrity: 0, budget: -300, link: &quot;S3Rc&quot; }
 ]&gt;&gt;
-&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="S3Ra" tags="" position="350,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve found the suppliers that have the largest market presence, but their solutions may not be the best fit for your specific needs.&quot;}] &gt;&gt;
+&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="S3Ra" tags="" position="225,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve found the suppliers that have the largest market presence, but their solutions may not be the best fit for your specific needs.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 4: User Scenarios|Step 4]]</tw-passagedata><tw-passagedata pid="14" name="S3Rb" tags="" position="475,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve found the suppliers that are recommended by peers and analysts, which may provide more reliable insights into their suitability for your needs.&quot;}] &gt;&gt;
+[[Step 4: User Scenarios|Step 4]]</tw-passagedata><tw-passagedata pid="13" name="S3Rb" tags="" position="350,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve found the suppliers that are recommended by peers and analysts, which may provide more reliable insights into their suitability for your needs.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 4: User Scenarios|Step 4]]</tw-passagedata><tw-passagedata pid="15" name="S3Rc" tags="" position="600,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve found the suppliers that are present at industry conferences or trade shows, which may provide valuable insights and networking opportunities.&quot;}] &gt;&gt;
+[[Step 4: User Scenarios|Step 4]]</tw-passagedata><tw-passagedata pid="14" name="S3Rc" tags="" position="475,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;You&#39;ve found the suppliers that are present at industry conferences or trade shows, which may provide valuable insights and networking opportunities.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 4: User Scenarios|Step 4]]</tw-passagedata><tw-passagedata pid="16" name="Step 4" tags="" position="725,225" size="100,100">&lt;h2&gt;Step 4: Prepare to test the solutions&lt;/h2&gt;
+[[Step 4: User Scenarios|Step 4]]</tw-passagedata><tw-passagedata pid="15" name="Step 4" tags="" position="600,225" size="100,100">&lt;h2&gt;Step 4: Prepare to test the solutions&lt;/h2&gt;
 &lt;p&gt;How will you test the software meets your requirements?&lt;/p&gt;
 &lt;&lt;set _choices = [
 	{ text: &quot;Create a checklist of features and non-functional specifications such as performance, security, and data protection.&quot;, integrity: -1, budget: -400, link: &quot;S4Ra&quot; },
 	{ text: &quot;Prepare a set of narrative stories for end-to-end testing from the user&#39;s perspective.&quot;, integrity: 2, budget: -825, link: &quot;S4Rb&quot; },
 	{ text: &quot;Use the suppliers&#39; comparison charts&quot;, integrity: -2, budget: -100, link: &quot;S4Rc&quot; }
 ]&gt;&gt;
-&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="S4Ra" tags="" position="850,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Features and specifications are important, but they don&#39;t tell the whole story. User stories provide a more holistic view of how the software will meet the needs of your users and organization.&quot;}] &gt;&gt;
+&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="S4Ra" tags="" position="725,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Features and specifications are important, but they don&#39;t tell the whole story. User stories provide a more holistic view of how the software will meet the needs of your users and organization.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 5: Requirements|Step 5]]</tw-passagedata><tw-passagedata pid="18" name="S4Rb" tags="" position="975,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;User scenarios provide a more holistic view of how the software will meet the needs of your users and organization. This can help identify potential issues and ensure a better fit.&quot;}] &gt;&gt;
+[[Step 5: Requirements|Step 5]]</tw-passagedata><tw-passagedata pid="17" name="S4Rb" tags="" position="850,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;User scenarios provide a more holistic view of how the software will meet the needs of your users and organization. This can help identify potential issues and ensure a better fit.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 5: Requirements|Step 5]]</tw-passagedata><tw-passagedata pid="19" name="S4Rc" tags="" position="1100,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Supplier comparison charts can provide a quick, albeit biased, overview, but they may not capture the nuances of how the software will perform in your specific environment.&quot;}] &gt;&gt;
+[[Step 5: Requirements|Step 5]]</tw-passagedata><tw-passagedata pid="18" name="S4Rc" tags="" position="975,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Supplier comparison charts can provide a quick, albeit biased, overview, but they may not capture the nuances of how the software will perform in your specific environment.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 5: Requirements|Step 5]]</tw-passagedata><tw-passagedata pid="20" name="Step 5" tags="" position="1225,225" size="100,100">&lt;h2&gt;Step 5: List the Requirements&lt;/h2&gt;
+[[Step 5: Requirements|Step 5]]</tw-passagedata><tw-passagedata pid="19" name="Step 5" tags="" position="1100,225" size="100,100">&lt;h2&gt;Step 5: List the Requirements&lt;/h2&gt;
 &lt;p&gt;Once you have your user stories, it&#39;s time to use them to create a list of requirements. What should these include?&lt;/p&gt;
 &lt;&lt;set _choices = [
 	{ text: &quot;A prioritized list of functional and non-functional requirements, and the rationale behind each.&quot;, integrity: 2, budget: -400, link: &quot;S5Ra&quot; },
 	{ text: &quot;A list of features based on what you&#39;ve seen in the systems you&#39;ve found during your research  &quot;, integrity: 1, budget: -250, link: &quot;S5Rb&quot; },
 	{ text: &quot;The requirements of your current system, copied over from the documents created when that was purchased.&quot;, integrity: -1, budget: -50, link: &quot;S5Rc&quot; }
 ]&gt;&gt;
-&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="S5Ra" tags="" position="100,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;A prioritized list of requirements helps you focus on what&#39;s most important, ensuring that critical needs are met while allowing flexibility for less essential features.&quot;}] &gt;&gt;
+&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="S5Ra" tags="" position="1225,225" size="100,100">&lt;&lt;set _statusText = [{text:&quot;A prioritized list of requirements helps you focus on what&#39;s most important, ensuring that critical needs are met while allowing flexibility for less essential features.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 6: Short List|Step 6]]</tw-passagedata><tw-passagedata pid="22" name="S5Rb" tags="" position="225,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;A list of features based on your research provides a snapshot of what&#39;s available, but it may not fully align with your organization&#39;s specific needs and priorities.&quot;}] &gt;&gt;
+[[Step 6: Short List|Step 6]]</tw-passagedata><tw-passagedata pid="21" name="S5Rb" tags="" position="100,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;A list of features based on your research provides a snapshot of what&#39;s available, but it may not fully align with your organization&#39;s specific needs and priorities.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 6: Short List|Step 6]]</tw-passagedata><tw-passagedata pid="23" name="S5Rc" tags="" position="350,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Copying the requirements of your current system may seem like a shortcut, but it can lead to outdated or irrelevant specifications that don&#39;t meet your organization&#39;s evolving needs.&quot;}] &gt;&gt;
+[[Step 6: Short List|Step 6]]</tw-passagedata><tw-passagedata pid="22" name="S5Rc" tags="" position="225,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Copying the requirements of your current system may seem like a shortcut, but it can lead to outdated or irrelevant specifications that don&#39;t meet your organization&#39;s evolving needs.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 6: Short List|Step 6]]</tw-passagedata><tw-passagedata pid="24" name="Step 6" tags="" position="475,350" size="100,100">&lt;h2&gt;Step 6: Make the Short List&lt;/h2&gt;
+[[Step 6: Short List|Step 6]]</tw-passagedata><tw-passagedata pid="23" name="Step 6" tags="" position="350,350" size="100,100">&lt;h2&gt;Step 6: Make the Short List&lt;/h2&gt;
 &lt;p&gt;How do you narrow 20 down to 5?&lt;/p&gt;
 &lt;&lt;set _choices = [
 	{ text: &quot;Filter out any whose websites are outdated or unprofessional.&quot;, integrity: -1, budget: -50, link: &quot;S6Ra&quot; },
 	{ text: &quot;Filter out any that fail to meet &#39;Must-Have&#39; criteria.&quot;, integrity: 2, budget: -200, link: &quot;S6Rb&quot; },
 	{ text: &quot;Filter the solutions based on their estimated costs.&quot;, integrity: -2, budget: -50, link: &quot;S6Rc&quot; }
 ]&gt;&gt;
-&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="S6Ra" tags="" position="600,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;The state of a supplier&#39;s website can provide some insight into their professionalism, but it doesn&#39;t necessarily reflect the quality of their software or services.&quot;}] &gt;&gt;
+&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="S6Ra" tags="" position="475,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;The state of a supplier&#39;s website can provide some insight into their professionalism, but it doesn&#39;t necessarily reflect the quality of their software or services.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
-[[Step 7: Competitive Dialogue|Step 7]]</tw-passagedata><tw-passagedata pid="26" name="S6Rb" tags="" position="725,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Filtering out solutions that fail to meet &#39;Must-Have&#39; criteria ensures that only viable options remain, focusing your efforts on the most critical requirements.&quot;}] &gt;&gt;
+[[Step 7: Competitive Dialogue|Step 7]]</tw-passagedata><tw-passagedata pid="25" name="S6Rb" tags="" position="600,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Filtering out solutions that fail to meet &#39;Must-Have&#39; criteria ensures that only viable options remain, focusing your efforts on the most critical requirements.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
-[[Step 7: Competitive Dialogue|Step 7]]</tw-passagedata><tw-passagedata pid="27" name="S6Rc" tags="" position="850,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Filtering solutions based on their estimated costs helps manage your budget, but it shouldn&#39;t be the sole criterion for selection.&quot;}] &gt;&gt;
+[[Step 7: Competitive Dialogue|Step 7]]</tw-passagedata><tw-passagedata pid="26" name="S6Rc" tags="" position="725,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Filtering solutions based on their estimated costs helps manage your budget, but it shouldn&#39;t be the sole criterion for selection.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
-[[Step 7: Competitive Dialogue|Step 7]]</tw-passagedata><tw-passagedata pid="28" name="Step 7" tags="" position="975,350" size="100,100">&lt;h2&gt;Step 7: Competitive Dialogue&lt;/h2&gt;
+[[Step 7: Competitive Dialogue|Step 7]]</tw-passagedata><tw-passagedata pid="27" name="Step 7" tags="" position="850,350" size="100,100">&lt;h2&gt;Step 7: Competitive Dialogue&lt;/h2&gt;
 &lt;p&gt;This is the most critical stage. How do you handle the finalists?&lt;/p&gt;
 
 &lt;&lt;set _choices = [
@@ -264,21 +267,21 @@ Config.history.controls = false;</script><tw-passagedata pid="1" name="ProjectWi
 	{ text: &quot;Work through an iterative series of presentations and test drives, followed by an RFP&quot;, integrity: 3, budget: -700, link: &quot;S7Rb&quot; },
 	{ text: &quot;Request a sales demonstration based on the scenarios, plus a proposal to score&quot;, integrity: -1, budget: -300, link: &quot;S7Rc&quot; }
 ]&gt;&gt;
-&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="S7Ra" tags="" position="1100,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Requesting a proposal from each of the short-listed suppliers and scoring the documents provides a structured way to compare options, but it often results in mis-matched expectations and overlooked nuances.&quot;}] &gt;&gt;
+&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="S7Ra" tags="" position="975,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Requesting a proposal from each of the short-listed suppliers and scoring the documents provides a structured way to compare options, but it often results in mis-matched expectations and overlooked nuances.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
-[[Step 8: Negotiation|Step 8]]</tw-passagedata><tw-passagedata pid="30" name="S7Rb" tags="" position="1225,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;An iterative series of presentations and test drives allows for a deeper understanding of how each solution performs in real-world scenarios, leading to a more informed decision.&quot;}] &gt;&gt;
+[[Step 8: Negotiation|Step 8]]</tw-passagedata><tw-passagedata pid="29" name="S7Rb" tags="" position="1100,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;An iterative series of presentations and test drives allows for a deeper understanding of how each solution performs in real-world scenarios, leading to a more informed decision.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
-[[Step 8: Negotiation|Step 8]]</tw-passagedata><tw-passagedata pid="31" name="S7Rc" tags="" position="100,475" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Requesting a sales demonstration based on the scenarios, plus a proposal to score, provides a more interactive way to evaluate the solutions. However, it may not capture all the nuances of how the software will perform in your specific environment.&quot;}] &gt;&gt;
+[[Step 8: Negotiation|Step 8]]</tw-passagedata><tw-passagedata pid="30" name="S7Rc" tags="" position="1225,350" size="100,100">&lt;&lt;set _statusText = [{text:&quot;Requesting a sales demonstration based on the scenarios, plus a proposal to score, provides a more interactive way to evaluate the solutions. However, it may not capture all the nuances of how the software will perform in your specific environment.&quot;}] &gt;&gt;
 &lt;&lt;Status _statusText&gt;&gt;
 
-[[Step 8: Negotiation|Step 8]]</tw-passagedata><tw-passagedata pid="32" name="Step 8" tags="" position="225,475" size="100,100">&lt;h2&gt;Step 8: Negotiation&lt;/h2&gt;
+[[Step 8: Negotiation|Step 8]]</tw-passagedata><tw-passagedata pid="31" name="Step 8" tags="" position="100,475" size="100,100">&lt;h2&gt;Step 8: Negotiation&lt;/h2&gt;
 &lt;p&gt;The finish line. How do you close the deal?&lt;/p&gt;
 &lt;&lt;set _choices = [
 	{ text: &quot;Demand a massive discount or walk away.&quot;, integrity: -1, budget: +500, link: &quot;End&quot; },
 	{ text: &quot;Negotiate on levers (eg. recycling licenses, break clauses).&quot;, integrity: 2, budget: -250, link: &quot;End&quot; },
 	{ text: &quot;Sign the standard boilerplate contract immediately.&quot;, integrity: -1, budget: 0, link: &quot;End&quot; }
 ]&gt;&gt;
-&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="End" tags="" position="350,475" size="100,100">&lt;h2&gt;Final Results&lt;/h2&gt;
+&lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="End" tags="" position="225,475" size="100,100">&lt;h2&gt;Final Results&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Strategic Integrity:&lt;/strong&gt; $integrity / 10&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Budget Remaining:&lt;/strong&gt; £$budget&lt;/p&gt;
 
