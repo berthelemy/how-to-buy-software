@@ -12,11 +12,10 @@ jobs:
       # Updated to v4 for better reliability
       - uses: actions/checkout@v4
 
-      - name: Use Go 1.23
+      - name: Use Go 1.26
         uses: actions/setup-go@v5
         with:
-          go-version: '1.23'
-          cache: false # Temporary: helps verify if the error is version-related vs cache-related
+          go-version: '1.26' # Upgrade to the current standards cache-related
 
       - name: build game
         run: |
