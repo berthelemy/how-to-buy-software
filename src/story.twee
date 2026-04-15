@@ -124,7 +124,7 @@ Software Procurement: The Strategic Journey
 
 :: Step 4
 <h2>Step 4: Prepare to test the solutions</h2>
-<p>How will you test the software meets your requirements?</p>
+<p>How will you test that the software meets your requirements?</p>
 <<set _choices = [
 	{ text: "Create a checklist of features and non-functional specifications such as performance, security, and data protection.", integrity: -1, budget: -400, link: "S4Ra" },
 	{ text: "Prepare a set of narrative stories for end-to-end testing from the user's perspective.", integrity: 2, budget: -825, link: "S4Rb" },
@@ -234,8 +234,8 @@ Software Procurement: The Strategic Journey
 <h2>Step 8: Negotiation</h2>
 <p>The finish line. How do you close the deal?</p>
 <<set _choices = [
-	{ text: "Demand a massive discount or walk away.", integrity: -1, budget: +500, link: "End" },
-	{ text: "Negotiate on levers (eg. recycling licenses, break clauses).", integrity: 2, budget: -250, link: "End" },
+	{ text: "Demand a massive discount or walk away.", integrity: -1, budget: +200, link: "End" },
+	{ text: "Negotiate on levers (eg. recycling licenses, break clauses).", integrity: 2, budget: -200, link: "End" },
 	{ text: "Sign the standard boilerplate contract immediately.", integrity: -1, budget: 0, link: "End" }
 ]>>
 <<randomChoices _choices>>
@@ -245,17 +245,28 @@ Software Procurement: The Strategic Journey
 <p><strong>Strategic Integrity:</strong> $integrity / 10</p>
 <p><strong>Budget Remaining:</strong> £$budget</p>
 
-<<if $integrity gte 10 and $budget gte 1000>>
-<h3>Result: Strategic Hero</h3>
-<p>You spent your budget wisely on the <strong>process</strong> rather than just the software.</p>
-<p>You have a solution that fits and a contract that protects you.</p>
-<<elseif $budget lte 1000>>
-<h3>Result: Bankrupt Strategist</h3>
-<p>You followed the book perfectly, but you ran out of money! The project is stalled because you can't pay the vendor's first invoice.</p>
+<<if $integrity gte 8>>
+
+<p>Congratulations! You've made strategic choices throughout the procurement process, ensuring a better fit for your organization and reducing the risk of "bite-back" issues later on.</p>
+
+<<elseif $integrity gte 3 and $integrity lt 8>>
+
+<p>You've made some strategic choices, but there are areas where you could have improved. Be mindful of potential "bite-back" issues and consider how you can address them moving forward.</p>
+
 <<else>>
-<h3>Result: Short Term Thinker</h3>
-<p>You are likely to face some "bite-back" issues because of skipped steps. At least you've not spent much of your budget.</p>
+<p>Unfortunately, your choices have led to a lower strategic integrity score. This may result in significant "bite-back" issues down the line, and you may need to invest additional time and resources to address them.</p>
 <</if>>
+
+<<if $budget gte 3500>>
+	<p>You've managed your budget well, leaving you with plenty of resources for implementation and future needs.</p>
+	<p>However, maybe you were a bit too cautious and missed out on some strategic opportunities that could have improved the fit of the solution.</p>
+<<elseif $budget gte 1000 and $budget lt 3500>>
+	<p>You've managed your budget reasonably well, but there may have been some missed opportunities for strategic investments that could have improved the fit of the solution.</p>
+<<else>>
+	<p>You've spent a significant portion of your budget, which may limit your ability to address any "bite-back" issues that arise later on.</p>
+	<p>Consider how you can manage your remaining resources effectively to mitigate potential risks.</p>
+<</if>>
+
 
 <<button "Restart">>
 	<<run Engine.restart()>>
