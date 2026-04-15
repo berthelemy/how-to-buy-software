@@ -463,7 +463,7 @@ State.variables.budget = 5000;
 &lt;&lt;Status _statusText&gt;&gt;
 
 [[Step 4: User Scenarios|Step 4]]</tw-passagedata><tw-passagedata pid="15" name="Step 4" tags="" position="600,225" size="100,100">&lt;h2&gt;Step 4: Prepare to test the solutions&lt;/h2&gt;
-&lt;p&gt;How will you test the software meets your requirements?&lt;/p&gt;
+&lt;p&gt;How will you test that the software meets your requirements?&lt;/p&gt;
 &lt;&lt;set _choices = [
 	{ text: &quot;Create a checklist of features and non-functional specifications such as performance, security, and data protection.&quot;, integrity: -1, budget: -400, link: &quot;S4Ra&quot; },
 	{ text: &quot;Prepare a set of narrative stories for end-to-end testing from the user&#39;s perspective.&quot;, integrity: 2, budget: -825, link: &quot;S4Rb&quot; },
@@ -525,25 +525,36 @@ State.variables.budget = 5000;
 [[Step 8: Negotiation|Step 8]]</tw-passagedata><tw-passagedata pid="31" name="Step 8" tags="" position="100,475" size="100,100">&lt;h2&gt;Step 8: Negotiation&lt;/h2&gt;
 &lt;p&gt;The finish line. How do you close the deal?&lt;/p&gt;
 &lt;&lt;set _choices = [
-	{ text: &quot;Demand a massive discount or walk away.&quot;, integrity: -1, budget: +500, link: &quot;End&quot; },
-	{ text: &quot;Negotiate on levers (eg. recycling licenses, break clauses).&quot;, integrity: 2, budget: -250, link: &quot;End&quot; },
+	{ text: &quot;Demand a massive discount or walk away.&quot;, integrity: -1, budget: +200, link: &quot;End&quot; },
+	{ text: &quot;Negotiate on levers (eg. recycling licenses, break clauses).&quot;, integrity: 2, budget: -200, link: &quot;End&quot; },
 	{ text: &quot;Sign the standard boilerplate contract immediately.&quot;, integrity: -1, budget: 0, link: &quot;End&quot; }
 ]&gt;&gt;
 &lt;&lt;randomChoices _choices&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="End" tags="" position="225,475" size="100,100">&lt;h2&gt;Final Results&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Strategic Integrity:&lt;/strong&gt; $integrity / 10&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Budget Remaining:&lt;/strong&gt; £$budget&lt;/p&gt;
 
-&lt;&lt;if $integrity gte 10 and $budget gte 1000&gt;&gt;
-&lt;h3&gt;Result: Strategic Hero&lt;/h3&gt;
-&lt;p&gt;You spent your budget wisely on the &lt;strong&gt;process&lt;/strong&gt; rather than just the software.&lt;/p&gt;
-&lt;p&gt;You have a solution that fits and a contract that protects you.&lt;/p&gt;
-&lt;&lt;elseif $budget lte 1000&gt;&gt;
-&lt;h3&gt;Result: Bankrupt Strategist&lt;/h3&gt;
-&lt;p&gt;You followed the book perfectly, but you ran out of money! The project is stalled because you can&#39;t pay the vendor&#39;s first invoice.&lt;/p&gt;
+&lt;&lt;if $integrity gte 8&gt;&gt;
+
+&lt;p&gt;Congratulations! You&#39;ve made strategic choices throughout the procurement process, ensuring a better fit for your organization and reducing the risk of &quot;bite-back&quot; issues later on.&lt;/p&gt;
+
+&lt;&lt;elseif $integrity gte 3 and $integrity lt 8&gt;&gt;
+
+&lt;p&gt;You&#39;ve made some strategic choices, but there are areas where you could have improved. Be mindful of potential &quot;bite-back&quot; issues and consider how you can address them moving forward.&lt;/p&gt;
+
 &lt;&lt;else&gt;&gt;
-&lt;h3&gt;Result: Short Term Thinker&lt;/h3&gt;
-&lt;p&gt;You are likely to face some &quot;bite-back&quot; issues because of skipped steps. At least you&#39;ve not spent much of your budget.&lt;/p&gt;
+&lt;p&gt;Unfortunately, your choices have led to a lower strategic integrity score. This may result in significant &quot;bite-back&quot; issues down the line, and you may need to invest additional time and resources to address them.&lt;/p&gt;
 &lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $budget gte 3500&gt;&gt;
+	&lt;p&gt;You&#39;ve managed your budget well, leaving you with plenty of resources for implementation and future needs.&lt;/p&gt;
+	&lt;p&gt;However, maybe you were a bit too cautious and missed out on some strategic opportunities that could have improved the fit of the solution.&lt;/p&gt;
+&lt;&lt;elseif $budget gte 1000 and $budget lt 3500&gt;&gt;
+	&lt;p&gt;You&#39;ve managed your budget reasonably well, but there may have been some missed opportunities for strategic investments that could have improved the fit of the solution.&lt;/p&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;p&gt;You&#39;ve spent a significant portion of your budget, which may limit your ability to address any &quot;bite-back&quot; issues that arise later on.&lt;/p&gt;
+	&lt;p&gt;Consider how you can manage your remaining resources effectively to mitigate potential risks.&lt;/p&gt;
+&lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;button &quot;Restart&quot;&gt;&gt;
 	&lt;&lt;run Engine.restart()&gt;&gt;
